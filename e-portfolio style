@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Crimson Text', serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+.rows {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  padding: 50px;
+}
+
+/*nav*/
+
+nav {
+  height: 100px;
+  width: 100%;
+  max-width: 1080px;
+  margin: 3 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.personal__logo {
+  font-size: 24px;
+  color: rgb(241, 241, 241);
+  margin: 0 12px;
+  font-weight: bold;
+}
+
+.nav__link--list {
+  display: flex;
+}
+
+.nav__link--anchor {
+  margin: 0 12px;
+  color: #eaeaea;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav__link--anchor-primary {
+  background-color: lightskyblue;
+  padding: 0px 20px;
+}
+
+.nav__link--anchor-primary:hover {
+  background-color: rgb(0, 56, 91);
+}
+
+#about {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.about__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__info--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about__picture {
+  width: auto;
+  height: 100%;
+  transform: scale(1.5);
+  padding-top: 8px;
+}
+
+.about__picture--mask {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+  margin-bottom: 28px;
+  animation: animate-profile-picture 800ms 100ms backwards;
+}
+
+.about__info--title {
+  margin-bottom: 16px;
+  animation: fade-up 650ms 400ms backwards;
+}
+.about__info--para {
+  font-size: 20px;
+  margin-bottom: 28px;
+}
+
+.about__link {
+  font-size: 18px;
+  color: #242424;
+  padding: 0 16px;
+}
+
+.about__links {
+  animation: fade-up 650ms 800ms backwards;
+}
+
+.about__links--title {
+  font-size: 23px;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animate-profile-picture {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bg__img {
+  background-image: url('https://images.unsplash.com/photo-1745917784199-e5f331064b6c');
+  background-size: cover;
+  opacity: 0.5;
+}
+/* source: https://unsplash.com/photos/underwater-cave-with-light-shining-through-ecGbAs_v7f0 */
