@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
-    font-family: 'Crimson Text', serif;
+    font-family: 'Press Start 2P', serif;
     font-weight: 400;
     font-style: normal;
     padding: 0;
@@ -32,6 +32,27 @@ ul li {
   padding: 50px;
 }
 
+/*bg*/
+
+.bg__img {
+  position: relative;
+}
+
+.bg__img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1745917784199-e5f331064b6c');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: -1;
+}
+/* source: https://unsplash.com/photos/underwater-cave-with-light-shining-through-ecGbAs_v7f0 */
+
 /*nav*/
 
 nav {
@@ -46,29 +67,34 @@ nav {
 
 .personal__logo {
   font-size: 24px;
-  color: rgb(241, 241, 241);
+  color: rgb(0, 0, 0);
   margin: 0 12px;
   font-weight: bold;
 }
+
 
 .nav__link--list {
   display: flex;
 }
 
+.nav__link {
+  font-size: 15px;
+}
+
 .nav__link--anchor {
   margin: 0 12px;
-  color: #eaeaea;
+  color: #000000;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .nav__link--anchor-primary {
-  background-color: lightskyblue;
+  color: rgb(0, 56, 91);
   padding: 0px 20px;
 }
 
 .nav__link--anchor-primary:hover {
-  background-color: rgb(0, 56, 91);
+  color: rgb(0, 124, 201);
 }
 
 #about {
@@ -82,6 +108,12 @@ nav {
   flex-direction: column;
 }
 
+.about__yap, .about__pic {
+  margin-left: 200px;
+  margin-right: -90px;
+}
+
+
 .about__info--container {
   display: flex;
   flex-direction: column;
@@ -89,6 +121,21 @@ nav {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+}
+
+.about__info--container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://static.vecteezy.com/system/resources/thumbnails/042/712/882/small/8bit-retro-game-pixel-speech-bubble-balloon-icon-sticker-memo-keyword-planner-text-box-banner-flat-transparent-element-design-png.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+  z-index: -1
 }
 
 .about__picture {
@@ -108,12 +155,8 @@ nav {
   animation: animate-profile-picture 800ms 100ms backwards;
 }
 
-.about__info--title {
-  margin-bottom: 16px;
-  animation: fade-up 650ms 400ms backwards;
-}
 .about__info--para {
-  font-size: 20px;
+  font-size: 13px;
   margin-bottom: 28px;
 }
 
@@ -125,6 +168,8 @@ nav {
 
 .about__links {
   animation: fade-up 650ms 800ms backwards;
+  margin-top: 20px;
+  margin-right: 90px;
 }
 
 .about__links--title {
@@ -163,9 +208,53 @@ nav {
   }
 }
 
-.bg__img {
-  background-image: url('https://images.unsplash.com/photo-1745917784199-e5f331064b6c');
-  background-size: cover;
-  opacity: 0.5;
+/*footer*/
+
+footer {
+  background-color: rgb(0, 56, 91);
 }
-/* source: https://unsplash.com/photos/underwater-cave-with-light-shining-through-ecGbAs_v7f0 */
+
+.footer__social--list {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 28px;
+}
+.footer__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8% 0;
+}
+
+.footer__logo--img {
+  width: 70px;
+  height: 70px;
+}
+
+.footer__social--link,
+.footer__copyright,
+.footer__logo--popper {
+  color: #fff;
+}
+
+.footer__logo--popper {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  font-weight: 700;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.footer__anchor {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer__anchor:hover .footer__logo--popper {
+  transform: translateX(60px);
+  opacity: 1;
+}
