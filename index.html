@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content = "IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>my e-portfolio</title>
-    <link rel = "stylesheet" href = "style.css">
+    <link rel = "stylesheet" href = "e-portfolio.css">
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
 </head>
 
@@ -13,10 +13,10 @@
     <div class = "bg__img">
         <section id = "about">
             <nav>
-                <div class = "personal__logo">name</div>
-                <ul>
-                    <li><a href = "#projects" class = "nav__link--anchor link__hover-effect link__hover-effect--black">projects</a></li>
-                <li><a href = "#contact" class = "nav__link--anchor nav__link--anchor-primary">contact</a></li>
+                <div class = "personal__logo">Alex Jagadish Bharath</div>
+                <ul  class = "top__link>
+                    <li"><a href = "#projects" class = "nav__link nav__link--anchor link__hover-effect link__hover-effect--black">projects</a></li>
+                    <li"><a href = "mailto:seabornescientist@gmail.com" class = "nav__link nav__link--anchor nav__link--anchor-primary">email</a></li>
                 </ul>
             </nav>
 
@@ -25,17 +25,20 @@
                     <div class = "about__info--container">
                         <div class = "rows">
                             <div class = "column">
-                                <figure class = "about__picture--mask"> <img class = "about__picture" src = "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/08/1000997009.jpg?q=70&fit=contain&w=750&h=422&dpr=1"></figure>
-                                <h1 class = "about__info-title"><span class = "text--black">name.</span></h1>
-                                <p class = "about__info--para">e.</p>
+                               <div class = "about__pic">
+                                    <figure class = "about__picture--mask"> <img class = "about__picture" src = "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/08/1000997009.jpg?q=70&fit=contain&w=750&h=422&dpr=1"></figure>
+                                </div>
+                                <div class = "about__yap">
+                                <p class = "about__info--para">zoologist. activitist. developer.</p>
+                                </div>
                             </div>
                             <div class = "column">
-                                <p class = "about__links--title">link up</p><br>
                                 <div class="about__links">
-                                    <a href="" class="about__link"><i class="fab fa-linkedin-in"></i>yargh</a><br>
-                                    <a href="" class="about__link"><i class="fab fa-github"></i>blegh</a><br>
-                                    <a href="mailto: seabornescientist@gmail.com" target = "_blank" class="about__link"><i class="far fa-envelope"></i>aaa</a><br>
-                                    <a href="./assets/Example Resume.pdf" target="_blank" class="about__link"><i class="fas fa-file-pdf"></i>h</a>
+                                    <a href="" class="about__link"><i class="fab fa-linkedin-in"></i>linkedin</a>
+                                    <br><br>
+                                    <a href="" class="about__link"><i class="fab fa-github"></i>github</a>
+                                    <br><br>
+                                    <a href="./assets/Example Resume.pdf" target="_blank" class="about__link"><i class="fas fa-file-pdf"></i>cv</a>
                                 </div>
                             </div>
                         </div>
@@ -43,6 +46,24 @@
                 </div>
             </div>
         </section>
+
+        <!--<section id = "projects"></section>-->
+        <!--skipping projects for now since i got none.-->
     </div>
+
+    <footer>
+    <div class="row footer__row">
+      <a href="#" class="footer__anchor">
+        <figure class="footer__logo">
+          <img src="" class="footer__logo--img" alt="">
+        </figure>
+        <span class="footer__logo--popper">
+          Top
+          <i class="fas fa-arrow-up"></i>
+        </span>
+      </a>
+      <div class="footer__copyright">Copyright © 2025 Alex Jagadish Bharath</div>
+    </div>
+  </footer>
 </body>
 </html>
