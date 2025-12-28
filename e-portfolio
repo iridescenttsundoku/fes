@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content = "IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my e-portfolio</title>
+    <link rel = "stylesheet" href = "e-portfolio.css">
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class = "bg__img">
+        <section id = "about">
+            <nav>
+                <div class = "personal__logo">name</div>
+                <ul>
+                    <li><a href = "#projects" class = "nav__link--anchor link__hover-effect link__hover-effect--black">projects</a></li>
+                <li><a href = "#contact" class = "nav__link--anchor nav__link--anchor-primary">contact</a></li>
+                </ul>
+            </nav>
+
+            <div class = "flex flex-1">
+                <div class = "about__info--row">
+                    <div class = "about__info--container">
+                        <div class = "rows">
+                            <div class = "column">
+                                <figure class = "about__picture--mask"> <img class = "about__picture" src = "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/08/1000997009.jpg?q=70&fit=contain&w=750&h=422&dpr=1"></figure>
+                                <h1 class = "about__info-title"><span class = "text--black">name.</span></h1>
+                                <p class = "about__info--para">e.</p>
+                            </div>
+                            <div class = "column">
+                                <p class = "about__links--title">link up</p><br>
+                                <div class="about__links">
+                                    <a href="" class="about__link"><i class="fab fa-linkedin-in"></i>yargh</a><br>
+                                    <a href="" class="about__link"><i class="fab fa-github"></i>blegh</a><br>
+                                    <a href="mailto: seabornescientist@gmail.com" target = "_blank" class="about__link"><i class="far fa-envelope"></i>aaa</a><br>
+                                    <a href="./assets/Example Resume.pdf" target="_blank" class="about__link"><i class="fas fa-file-pdf"></i>h</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
