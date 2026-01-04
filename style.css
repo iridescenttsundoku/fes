@@ -326,6 +326,7 @@ nav {
     top: 0;
     bottom: 0;
     z-index: 1;
+    display: flex;
     transition: border-color 300ms;
 }
 
@@ -340,6 +341,10 @@ nav {
     font-weight: 700;
     font-size: 16px;
     transition: all 300ms ease;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    display: flex;
     z-index: 2;
 }
 
@@ -447,7 +452,7 @@ nav {
     display: flex;
     border-radius: 4px;
     border: 1px solid rgb(229, 231, 235);
-    margin: 0px 56px;
+    margin: 20px 56px;
     z-index: 2;
 }
 
@@ -1199,6 +1204,28 @@ footer {
 }
 
 @media (max-width: 768px) {
+    
+    .features {
+        max-width: 640px;
+    }
+
+    .feature {
+        width: 100%;
+    }
+
+    .feature__row {
+        padding: 16px 4px;
+        margin: 0px 8px;
+    }
+
+    .feature__name {
+        line-height: 1;
+    }
+
+    .feature__para {
+        max-width: none;
+    }
+    
     .value {
         margin-right: 0px;
         align-items: center;
@@ -1243,5 +1270,39 @@ footer {
 @media (max-width: 640px) {
     .btn {
         line-height: 1.5
+    }
+}
+
+@media (max-width: 558px) {
+    .header__input {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .header__input--email {
+        position: relative;
+        width: 100%;
+        height: 60px;
+        display: flex;
+    }
+    
+    .header__input--btn {
+        position: relative;
+        width: 100%;
+        height: 60px;
+        display: flex;
+    }
+    
+    .footer__logo {
+        display: none;
+    }
+
+    .footer__copyright {
+        width: 50%;
+    }
+    
+    .footer__socials {
+        width: 50%;
     }
 }
