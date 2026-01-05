@@ -563,6 +563,8 @@ nav {
 .value__title {
     display: flex;
     align-items: center;
+    width: 100%;
+    flex-direction: row;
 }
 
 .value__img--wrapper {
@@ -1243,7 +1245,7 @@ footer {
         flex-direction: column;
     }
 
-    .quality__descn, .quality__img--wrapper, .steps__desc, .steps__img--wrapper, .values__desc, .values__img, .testimonials__desc, .testimonials__img {
+    .quality__desc, .quality__img--wrapper, .steps__desc, .steps__img--wrapper, .values__desc, .values__img, .testimonials__desc, .testimonials__img {
         width: 100%;
         max-width: 448px;
     }
@@ -1270,6 +1272,12 @@ footer {
 @media (max-width: 640px) {
     .btn {
         line-height: 1.5
+    }
+
+    .value__title {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 }
 
@@ -1304,5 +1312,12 @@ footer {
     
     .footer__socials {
         width: 50%;
+    }
+}
+
+@media (max-width: 339px) {
+    #quality .section__title {
+        position: relative;
+        width: 100%;
     }
 }
