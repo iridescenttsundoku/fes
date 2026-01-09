@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>me myself and i</title>
+    <link rel = "stylesheet" href = "advproj - Copy.css">
+    <script src = "advproj - Copy.js" type = "text/javascript"></script>
+    <script src = "https://kit.fontawesome.com/a95b8b142d.js" crossorigin = "anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "user_j4IeFqS57DtE2zYS2",
+            });
+        })();
+    </script>
+</head>
+<body>
+    <section id = "landing" onmousemove = "moveBackground(event)">
+        <nav>
+            <p class = "name blue">Alex Jagadish</p>
+            <ul class = "nav__links-list">
+                <li class="nav__link"><a href = "#" class = "nav__link--anchor link__hover-effect link__hover-effect--black">About</a></li>
+                <li class="nav__link"><a href = "#" class = "nav__link--anchor link__hover-effect link__hover-effect--black">Projects</a></li>
+                <li class="nav__link" onclick = "toggleModal()"><a href = "#" class = "nav__link--anchor link__hover-effect link__hover-effect--black">Contact</a></li>
+                <li class="nav__link click" onclick = "toggleContrast()"><a href = "#" class = "nav__link--anchor link__hover-effect"><i class="fa-solid fa-moon"></i></a></li>
+            </ul>
+        </nav>
+        <header class="header">
+            <div class="header__content">
+                <figure><img src = "https://i.pinimg.com/736x/af/e2/9a/afe29a3c15d09813d14804f5b2a297c4.jpg" class = "header__icon"></figure>
+                <p class = "header__para"><br>zoologist.<br><b class = "blue">activist.</b><br>developer.<br></p>
+                <div class = "socials">
+                    <a href = "https://www.linkedin.com/in/alex-jagadish-65364955/" class = "social" target = "_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href = "https://github.com/iridescenttsundoku" class = "social" target = "_blank"><i class="fa-brands fa-github-alt"></i></a>
+                    <a href = "" class = "social" target = "_blank"><i class="fa-regular fa-floppy-disk"></i></i></a>
+                </div>
+            </div>
+        </header>
+        <a href = ""><button class = "mail__btn click" onclick = "toggleModal()"><i class="fa-sharp fa-solid fa-envelopes-bulk"></i></button></a>
+        <a href = "#projects" class = "scroll">
+            <div class = "scroll__icon click"></div>
+        </a>
+        <div class = "modal">
+            <div class = "modal__half modal__about">
+                <h3 class = "modal__title modal__title--about">Here's a bit about me.</h3>
+                <h3 class = "modal__subtitle modal__subtitle--about">scientist and frontend engineer</h3>
+                <p class = "modal__para">I'm a 23 year old <strong class = "blue">physicist</strong>, <strong class = "blue">zoologist-in-the-making</strong> in the making and <strong class = "blue">fourth generation engineer</strong> who likes designing accessible websites.</p>
+                <div class = "modal__languages">
+                    <figure class = "modal__language"><img src = "https://icons.iconarchive.com/icons/cornmanthe3rd/plex/512/Other-html-5-icon.png" class = "modal__language--img" alt = ""><span class = "modal__language--name">HTML</span></figure>
+                    <figure class = "modal__language"><img src = "https://images.icon-icons.com/844/PNG/512/CSS3_icon-icons.com_67069.png" class = "modal__language--img" alt = ""><span class = "modal__language--name">CSS</span></figure>
+                    <figure class = "modal__language"><img src = "https://iconape.com/wp-content/png_logo_vector/javascript-logo.png" class = "modal__language--img" alt = ""><span class = "modal__language--name">JavaScript</span></figure>
+                </div>
+            </div>
+            <div class = "modal__half modal__contact">
+                <i class = "fas fa-times modal__exit click" onclick = "toggleModal"></i>
+                <h3 class = "modal__title modal__title--contact">Let's have a chat!</h3>
+                <h4 class = "modal__subtitle modal__subtitle--contact">I'm currently open to new opportunities.</h4>
+                <form id = "contact__form" onclick = "contact(event)">
+                    <div class = "form__item">
+                        <label class = "form__item--label">Name</label>
+                        <input class = "input" name = "user_name" type = "text" required>
+                    </div>
+                    <div class = "form__item">
+                        <label class = "form__item--label">E-mail</label>
+                        <input class = "input" name = "user_email" type = "text" required>
+                    </div>
+                    <div class = "form__item">
+                        <label class = "form__item--label">Message</label>
+                        <textarea class = "input" name = "message" type = "text" required></textarea>
+                    </div>
+                    <button id = "contact__submit" class = "form__submit">Send it my way.</button>
+                </form>
+                <div class = "modal__overlay modal__overlay--loading"><i class = "fas fa-spinner"></i></div>
+                <div class = "modal__overlay modal__overlay--success">Thanks for the message!</div>
+            </div>
+        </div>
+        <img src = "./assets/semi_circle.svg" class = "shape shape--0">
+        <img src = "./assets/circle.svg" class = "shape shape--1">
+        <img src = "./assets/squiggly.svg" class = "shape shape--2">
+        <img src = "./assets/circle.svg" class = "shape shape--3">
+        <img src = "./assets/triangle.svg" class = "shape shape--4">
+        <img src = "./assets/circle.svg" class = "shape shape--5">
+        <img src = "./assets/squiggly.svg" class = "shape shape--6">
+        <img src = "./assets/circle.svg" class = "shape shape--7">
+        <img src = "./assets/semi_circle.svg" class = "shape shape--8">
+    </section>
+
+    <section id = "projects">
+        <div class = "container">
+            <div class = "row">
+                <h1 class = "section__title">Here are some of my <span class = "blue">projects</span></h1>
+                <ul class = "project__list">
+                    <li class = "project">
+                        <div class = "project__wrapper">
+                            <img src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5487225.jpg&f=1&nofb=1&ipt=95ac3a54ac90150efae433eba66939f3773732f5e225900682f5a851444eba40" alt = "" class = "project__img">
+                            <div class = "project__wrapper--bg">
+                                <div class = "project__desc">
+                                    <h3 class = "project__desc--title">xxx</h3>
+                                    <h4 class = "project__desc--subtitle">HTML, CSS, JavaScript</h4>
+                                    <p class = "project__desc--para">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                                    <div class = "project__desc--links">
+                                        <a href = "" class = "project__desc--link"><i class = "fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class = "project">
+                        <div class = "project__wrapper">
+                            <img src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F3095939.jpg&f=1&nofb=1&ipt=82312113da3ecb7fce00859111916a4226e08979c219f1e13fc62518f9f59d63" alt = "" class = "project__img">
+                            <div class = "project__wrapper--bg">
+                                <div class = "project__desc">
+                                    <h3 class = "project__desc--title">xxx</h3>
+                                    <h4 class = "project__desc--subtitle">HTML, CSS, JavaScript</h4>
+                                    <p class = "project__desc--para">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                                    <div class = "project__desc--links">
+                                        <a href = "" class = "project__desc--link"><i class = "fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class = "project">
+                        <div class = "project__wrapper">
+                            <img src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F5587202.png&f=1&nofb=1&ipt=cc81666ff0cfd3c2a5d1792543b9234d9115cb3571062aa2a311d22184d732d2" alt = "" class = "project__img">
+                            <div class = "project__wrapper--bg">
+                                <div class = "project__desc">
+                                    <h3 class = "project__desc--title">xxx</h3>
+                                    <h4 class = "project__desc--subtitle">HTML, CSS, JavaScript</h4>
+                                    <p class = "project__desc--para">Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                                    <div class = "project__desc--links">
+                                        <a href = "" class = "project__desc--link"><i class = "fas fa-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class = "container">
+            <div class = "row footer__row">
+                <figure><img src = "" alt = "" class = "footer__logo--img"></figure>
+                <div class = "footer__socials">
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">github</a>
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">linkedin</a>
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">contact</a>
+                    <a href = "" class = "footer__social--link link__hover-effect link__hover-effect link__hover-effect--white">resume</a>
+                </div>
+                <div class = "footer__copyright">Copyright © 2026 Alex Jagadish Bharath</div>
+                <div class = "footer__bg-cred">Background Picture: <a href = "https://unsplash.com/photos/underwater-cave-with-light-shining-through-ecGbAs_v7f0">Erick Morales Oyola on Unsplash</a></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
