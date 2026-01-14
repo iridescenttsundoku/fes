@@ -170,25 +170,23 @@ search
     right: 0;
     bottom: 0;
     z-index: 6;
-    display: flex;
-    visibility: hidden;
+    display: none;
     justify-content: center;
     align-items: center;
     transition: all 100ms ease;
     transform: translateX(100%);
     opacity: 0;
     width: 20%;
-    height: 45px;
-    margin-right: 80px;
+    height: 100%;
     margin-top: 15px;
     margin-bottom: 15px;
     border-radius: 40px;
 }
 
 .search__bar.open {
-    max-height: 75px;
+    max-height: 45px;
     overflow: hidden;
-    visibility: visible;
+    display: block;
     opacity: 0.8;
     transform: translate(0);
     display: block;
@@ -205,6 +203,6 @@ search
 
 input[type="text"] {
     padding-block: 1px;
-    padding-inline: 3%;
+    padding-inline: 4%;
     border: none;
 }
