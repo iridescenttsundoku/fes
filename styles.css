@@ -1,5 +1,10 @@
+@font-face {
+    font-family: "myFont";
+    src: url("Geometric 706 Medium//Geometric 706 Medium.otf") format("opentype");
+}
+
 * {
-    font-family: 'Crimson Text', serif;
+    font-family: "myFont";
     font-weight: 400;
     font-style: normal;
     padding: 0;
@@ -30,13 +35,12 @@ li {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 a:hover {
     text-decoration: underline;
 }
-
-/*dark mode: rgb(71, 40, 19)*/
 
 .container {
     padding: 50px 0;
@@ -54,7 +58,7 @@ header {
 }
 
 .header__row {
-    background-color: rgb(158, 93, 63);
+    background-color: rgb(126, 61, 31);
     position: sticky;
     display: inline-flex;
     align-items: end; 
@@ -87,6 +91,34 @@ header {
     height: 100vh;
 }
 
+.logo__para {
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+    opacity: 0.75;
+    margin: 15px 0;
+}
+
+/*
+
+dark mode
+
+*/
+
+/*dark theme*/
+
+.dark-theme {
+    background: rgb(71, 40, 19);
+}
+
+.dark-theme .header__row {
+    background: rgb(102, 57, 33);
+}
+
+.dark-theme .menu__backdrop {
+    background: rgb(115, 67, 41);
+}
+
 /*
 
 menu
@@ -105,8 +137,12 @@ menu
     justify-content: center;
     align-items: center;
     visibility: hidden;
-    transition: all 200ms ease;
+    transition: all 100ms ease;
     transform: translateX(-100%);
+    box-shadow:
+        1px 2px 2px hsla(0, 22%, 30%, 0.2),
+        2px 4px 4px hsla(0, 23%, 18%, 0.2),
+        4px 8px 8px hsla(9, 28%, 23%, 0.2);
     opacity: 0;
     width: 25%;
     height: 100vh;
@@ -165,31 +201,26 @@ search
 .search__bar {
     position: absolute;
     background-color: rgb(236, 209, 197);
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 15px;
+    right: 80px;      /* move it in from the right */
     z-index: 6;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 100ms ease;
-    transform: translateX(100%);
-    opacity: 0;
+    opacity: 1;
     width: 20%;
-    height: 100%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    height: 45px;
     border-radius: 40px;
+    visibility: hidden;
 }
 
 .search__bar.open {
     max-height: 45px;
     overflow: hidden;
-    display: block;
+    display: flex;
     opacity: 0.8;
-    transform: translate(0);
-    display: block;
+    border-radius: 40px;
+    visibility: visible;
 }
 
 .search__bar--input {
@@ -205,4 +236,164 @@ input[type="text"] {
     padding-block: 1px;
     padding-inline: 4%;
     border: none;
+}
+
+/*
+
+weekly media
+
+*/
+
+@import "bourbon";
+/*---- NUMBER OF SLIDE CONFIGURATION ----*/
+
+#landing .row {
+    justify-content: space-between;
+    display: flex;
+    height: 500px;
+}
+
+#landing a:hover {
+    text-decoration: underline;
+    color: rgb(92, 62, 48);
+}
+
+.media__slideshow {
+    width: 70%;
+    color: rgb(92, 62, 48);
+    background-color: rgba(63, 62, 61, 0.1);
+    border-radius: 5%;
+    margin-right: 1%;
+    padding: 1% 1%;
+}
+
+.media__slideshow--header {
+    font-size: 40px;
+    letter-spacing: 0.05em; /* make sure the letters don't overlap */
+    vertical-align: middle;
+    line-height: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.media__slideshow--wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 1%;
+    width: 100%;
+    height: 85%;
+}
+
+/* code by utibe udoma on medium*/
+
+.media__slides {
+  position: relative;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+}
+
+.media__slide {
+    top: 10%;
+}
+
+.media__slide, .media__show {
+  position: absolute;
+  width: auto;
+  height: auto;
+  display: none;
+  justify-content: space-between;
+}
+.media__slide:first-child, .media__show:first-child {
+  display: block;
+}
+.prev, .next {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+}
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.media__slide--img {
+    width: 90%;
+    margin: 0% 5%;
+    padding: 0% 1%;
+    border-radius: 5%;
+}
+
+.media__shows {
+    width: 40%;
+    height: auto;
+}
+
+.media__show {
+    top: 50%;
+}
+
+/*
+
+weekly
+
+*/
+
+.weekly__media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    color: rgb(92, 62, 48);
+    background-color: rgba(63, 62, 61, 0.1);
+    border-radius: 5%;
+    padding: 1% 0px;
+}
+
+.weekly__media--header {
+    font-size: 40px;
+    text-shadow: 0.05em 0 rgb(184, 161, 149); /* This creates the 3D effect, pretty easy, eh? */
+    letter-spacing: 0.05em; /* make sure the letters don't overlap */
+    vertical-align: middle;
+    line-height: 1em;
+    transition: font-size 400ms cubic-bezier(0, 1, 0, 1);
+    /*text-decoration: underline overline;*/
+    text-decoration-thickness: 7%;
+}
+
+.weekly__media--cover-figure {
+    margin: 1% 0;
+}
+
+.weekly__media--cover {
+    margin: 2% 25%;
+    width: 50%;
+    height: auto;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075);
+    border-radius: 5%;
+}
+
+.weekly__media--title {
+    padding: 1% 0;
+    font-style: italic;
+    font-size: 25px;
+    color: rgb(66, 42, 47);
+}
+
+.weekly__media--author {
+    color: rgb(92, 62, 48);
 }
