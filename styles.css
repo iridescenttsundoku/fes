@@ -245,13 +245,9 @@ weekly media
 
 */
 
-@import "bourbon";
-/*---- NUMBER OF SLIDE CONFIGURATION ----*/
-
 #landing .row {
     justify-content: space-between;
     display: flex;
-    height: 500px;
 }
 
 #landing a:hover {
@@ -285,6 +281,7 @@ weekly media
     padding: 0px 1%;
     width: 100%;
     height: 85%;
+    z-index: -2;
 }
 
 /* code by utibe udoma on medium*/
@@ -333,16 +330,17 @@ weekly media
     margin: 0% 5%;
     padding: 0% 1%;
     border-radius: 5%;
+    z-index: -1;
 }
 
 .media__shows {
     width: 20%;
     height: auto;
+    text-align: center;
 }
 
 .media__show {
     top: 50%;
-    text-align: center;
 }
 
 /*
