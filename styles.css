@@ -10,6 +10,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    max-width: 100%;
 }
 
 html {
@@ -23,6 +24,10 @@ button {
 body {
   position: relative;
   background-color: rgb(222, 203, 191);
+}
+
+img {
+    object-fit: contain;
 }
 
 ul {
@@ -40,6 +45,7 @@ a {
 
 a:hover {
     text-decoration: underline;
+    color: rgb(92, 62, 48);
 }
 
 .container {
@@ -109,6 +115,11 @@ dark mode
 
 .dark-theme {
     background: rgb(71, 40, 19);
+    text-decoration-color: rgba(255, 255, 255, 0.75);
+}
+
+.dark-theme a:hover {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .dark-theme .header__row {
@@ -117,6 +128,17 @@ dark mode
 
 .dark-theme .menu__backdrop {
     background: rgb(115, 67, 41);
+}
+
+.dark-theme .cont__read, .dark-theme .media__slideshow, .dark-theme .weekly__media,
+.dark-theme .popular__header, .dark-theme .popular__media {
+    background: rgb(102, 57, 33);
+}
+
+.dark-theme .cont__read--phrase, .dark-theme .media__slideshow,
+.dark-theme .weekly__media, .dark-theme .weekly__media--title, .dark-theme .weekly__media--author,
+.dark-theme .popular__header, .dark-theme .popular__media--title, .dark-theme .popular__media--comment {
+    color: rgb(255, 255, 255, 0.75);
 }
 
 /*
@@ -132,7 +154,6 @@ menu
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -157,6 +178,10 @@ menu
     visibility: visible;
     opacity: 1;
     transform: translate(0);
+}
+
+.menu--open .cont__read, .menu--open .media__slideshow, .menu--open .weekly__media {
+    z-index: -1;
 }
 
 .btn__menu--close {
@@ -241,19 +266,59 @@ input[type="text"] {
 
 /*
 
-weekly media
+continue reading
 
 */
 
 #landing .row {
     justify-content: space-between;
     display: flex;
+    min-height: 100%;
 }
 
-#landing a:hover {
-    text-decoration: underline;
-    color: rgb(92, 62, 48);
+#landing .container {
+    height: auto;
+    padding: 10px 0px 2px 0px;
 }
+
+.cont__read {
+    display: flex;
+    flex-direction: column;
+    background: rgba(63, 62, 61, 0.1);
+    margin-right: 1%;
+    padding: 1% 1%;
+    border-radius: 5%;
+    width: 33%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+}
+
+.cont__read--phrase {
+    color: rgb(92, 62, 48);
+    font-size: 30px;
+    margin-bottom: 10%;
+    text-shadow: 0.05em 0 rgb(184, 161, 149);
+}
+
+.cont__read img {
+    max-height: 300px;
+    border-radius: 5%;
+    max-width: 90%;
+    object-fit: contain;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+/*
+
+media slideshow
+
+*/
 
 .media__slideshow {
     width: 70%;
@@ -262,10 +327,12 @@ weekly media
     border-radius: 5%;
     margin-right: 1%;
     padding: 1% 1%;
+    z-index: 0;
 }
 
 .media__slideshow--header {
     font-size: 40px;
+    text-shadow: 0.05em 0 rgb(184, 161, 149); /* This creates the 3D effect, pretty easy, eh? */
     letter-spacing: 0.05em; /* make sure the letters don't overlap */
     vertical-align: middle;
     line-height: 1em;
@@ -277,27 +344,31 @@ weekly media
 
 .media__slideshow--wrapper {
     display: flex;
+    position: relative;
     flex-direction: row;
     padding: 0px 1%;
     width: 100%;
     height: 85%;
-    z-index: -2;
+    z-index: -10;
 }
 
 /* code by utibe udoma on medium*/
 
 .media__slides {
   position: relative;
-  width: 100%;
+  max-width: 100%;
+  min-width: 75%;
   height: auto;
 }
 
 .media__slide {
     top: 5%;
+    padding: 0px 5%;
+    margin: 0px 5%;
 }
 
 .media__slide, .media__show {
-  position: absolute;
+  position: relative;
   width: auto;
   height: auto;
   display: none;
@@ -308,14 +379,14 @@ weekly media
 }
 .prev, .next {
   position: absolute;
-  top: 55%;
+  display: flex;
   transform: translateY(-50%);
+  top: 50%;
   width: auto;
-  margin-top: -22px;
   padding: 16px;
   color: white;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   cursor: pointer;
@@ -325,27 +396,28 @@ weekly media
   border-radius: 3px 0 0 3px;
 }
 
-.media__slide--img {
-    width: 90%;
-    margin: 0% 5%;
-    padding: 0% 1%;
-    border-radius: 5%;
-    z-index: -1;
+.media__slide img {
+    max-width: 100%;
+    padding-bottom: 2%;
+    border-radius: 20%;
+    object-fit: contain;
+    max-height: 400px;
 }
 
 .media__shows {
     width: 20%;
     height: auto;
     text-align: center;
+    align-content: center;
 }
 
 .media__show {
-    top: 50%;
+    font-size: 20px;
 }
 
 /*
 
-weekly
+weekly media
 
 */
 
@@ -367,8 +439,6 @@ weekly
     vertical-align: middle;
     line-height: 1em;
     transition: font-size 400ms cubic-bezier(0, 1, 0, 1);
-    /*text-decoration: underline overline;*/
-    text-decoration-thickness: 7%;
     text-align: center;
 }
 
@@ -399,4 +469,73 @@ weekly
 .weekly__media--author {
     color: rgb(92, 62, 48);
     text-align: center;
+}
+
+/*
+
+popular
+
+*/
+
+#popular .container {
+    padding-top: 15px;
+    height: auto;
+}
+
+.popular__header {
+    background-color: rgba(63, 62, 61, 0.1);
+    color: rgba(92, 62, 48);
+    text-align: center;
+    width: 100vw;
+}
+
+.popular__media--list {
+    display: flex;
+    flex-direction: row;
+    padding-top: 1%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.popular__media {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-height: 300px;
+    height: auto;
+}
+
+.popular__media--wrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(63, 62, 61, 0.1);
+}
+
+.popular__media--title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: rgba(92, 62, 48);
+    background-color: rgba(110, 101, 92, 0.3);
+    height: auto;
+}
+
+.popular__media--comment {
+    color: rgba(92, 62, 48);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: auto;
+}
+
+.popular__media--img-wrapper {
+    width: auto;
+}
+
+.popular__media--img {
+    max-height: 300px;
+    object-fit: contain;
+    padding: 10px 10px;
 }
