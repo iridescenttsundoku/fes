@@ -25,6 +25,7 @@ function toggleContrast() {
     }
 }
 
+
 showSlides(slideIndex);function plusSlide(n) {
   showSlides(slideIndex += n);
 }function showSlides(n) {
