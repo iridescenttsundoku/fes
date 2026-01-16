@@ -11,6 +11,7 @@
     margin: 0;
     box-sizing: border-box;
     max-width: 100%;
+    height: auto;
 }
 
 html {
@@ -94,7 +95,7 @@ header {
 }
 
 #home {
-    height: 100vh;
+    height: 100%;
 }
 
 .logo__para {
@@ -131,14 +132,25 @@ dark mode
 }
 
 .dark-theme .cont__read, .dark-theme .media__slideshow, .dark-theme .weekly__media,
-.dark-theme .popular__header, .dark-theme .popular__media {
-    background: rgb(102, 57, 33);
+.dark-theme .popular__header, .dark-theme .popular__media,
+.dark-theme footer {
+    background: rgb(77, 50, 34);
 }
 
 .dark-theme .cont__read--phrase, .dark-theme .media__slideshow,
 .dark-theme .weekly__media, .dark-theme .weekly__media--title, .dark-theme .weekly__media--author,
 .dark-theme .popular__header, .dark-theme .popular__media--title, .dark-theme .popular__media--comment {
     color: rgb(255, 255, 255, 0.75);
+}
+
+.dark-theme footer {
+    max-height: 200px;
+}
+
+.dark-theme .cont__read--phrase,
+.dark-theme .media__slideshow--header,
+.dark-theme .weekly__media--header {
+    text-shadow: 0.05em 0 rgb(65, 37, 20);
 }
 
 /*
@@ -278,7 +290,7 @@ continue reading
 
 #landing .container {
     height: auto;
-    padding: 10px 0px 2px 0px;
+    padding: 20px 0px 2px 0px;
 }
 
 .cont__read {
@@ -478,7 +490,7 @@ popular
 */
 
 #popular .container {
-    padding-top: 15px;
+    padding-top: 30px;
     height: auto;
 }
 
@@ -503,12 +515,15 @@ popular
     width: auto;
     max-height: 300px;
     height: auto;
+    justify-content: flex-end;
 }
 
 .popular__media--wrapper {
     display: flex;
     flex-direction: row;
     background-color: rgba(63, 62, 61, 0.1);
+    height: 100%;
+    overflow-y: hidden;
 }
 
 .popular__media--title {
@@ -535,7 +550,36 @@ popular
 }
 
 .popular__media--img {
-    max-height: 300px;
+    height: 275px;
     object-fit: contain;
     padding: 10px 10px;
+    width: auto;
+}
+
+/*
+
+footer
+
+*/
+
+footer {
+    background-color: rgba(71, 40, 19, 0.8);
+    color: white;
+    max-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__logo {
+    height: 60%;
+    font-size: 50px;
+    padding: 25px 0 20px 0;
+}
+
+.footer__copyright {
+    font-size: 20px;
+    padding: 25px 0;
 }
