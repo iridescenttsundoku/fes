@@ -104,10 +104,7 @@ textarea {
 
 .blue {
     color: rgb(35, 32, 175) !important;
-}
-
-strong {
-    font-weight: bold !important;
+    font-family: inherit;
 }
 
 .container {
@@ -176,26 +173,30 @@ nav, .scroll, .header {
 
 /*dark theme*/
 
+.dark-theme {
+    background: #242424 !important;
+}
+
 .dark-theme .title,
 .dark-theme .section__title, .dark-theme .section__subtitle,
 .dark-theme .nav__link--anchor,
 .dark-theme .fa-adjust,
 .dark-theme .header__para
 {
-    color: white;
+    color: rgb(216, 204, 204);
 }
 
 .dark-theme .scroll__icon {
-    border-color: white;
+    border-color: rgb(216, 204, 204);
 }
 
 .dark-theme .scroll__icon:after,
 .dark-theme .link__hover-effect--black:after {
-    background-color: white;
+    background-color: rgb(216, 204, 204);
 }
 
 .dark-theme .mail__btn {
-    background-color: white;
+    background-color: rgb(216, 204, 204);
     color: #242424;
 }
 
@@ -212,11 +213,12 @@ nav, .scroll, .header {
 
 #landing {
     min-height: 100vh;
+    position: relative;
 }
 
 .header {
     position: absolute;
-    top: 10%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -364,7 +366,8 @@ nav, .scroll, .header {
     transform: translateX(-110%);
 }
 
-.modal__open .modal__about, .modal__open .modal__contact {
+.modal--open .modal__about,
+.modal--open .modal__contact {
     transform: translateX(0%);
 }
 
@@ -415,16 +418,28 @@ nav, .scroll, .header {
 
 .modal__subtitle--about {
     font-style: italic;
+    font-size: 16px;
 }
 
 .modal__para {
     margin: 12px 0;
     line-height: 1.75;
+    font-family: fangsong !important;
+}
+
+.font__fs {
+    font-family: fangsong !important;
 }
 
 .modal__contact {
     background-color: #242424;
     color: white;
+    transform: translateX(-110%);
+}
+
+.modal__subtitle--contact {
+    font-size: 24px;
+    margin-left: 0px;
 }
 
 .modal__overlay--visible {
@@ -475,6 +490,10 @@ nav, .scroll, .header {
     margin-top: 20px;
 }
 
+.form__item--label {
+    font-size: 20px;
+}
+
 .form__submit {
     background-color: rgb(35, 32, 175);
     border: 2px solid rgb(35, 32, 175);
@@ -483,7 +502,8 @@ nav, .scroll, .header {
     width: 100%;
     max-width: 240px;
     padding: 12px 24px;
-    font-size: 20px;
+    font-size: 15px;
+    margin-top: 20px;
 }
 
 .form__submit:hover {
@@ -606,6 +626,7 @@ footer {
     display: flex;
     justify-content: space-around;
     max-width: 500px;
+    margin-bottom: 40px;
 }
 
 .footer__logo--img {
@@ -617,14 +638,20 @@ footer {
     color: white;
 }
 
-.footer__bg-cred {
-    padding-top: 40px;
+.footer__bg-cred-top {
+    padding-top: 25px;
+}
+
+.footer__bg-cred-bot {
+    padding-top: 8px;
 }
 
 /*shapes*/
 
 .shape {
     position: fixed;
+    max-height: 120px;
+    max-width: 120px;
 }
 
 .shape--0 {
