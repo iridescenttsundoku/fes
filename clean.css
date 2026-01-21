@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Press+Start+2P&display=swap');
+
+* {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: rgb(92, 62, 48);
+}
+
+.container {
+  padding: 8px 0;
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+header {
+  width: 100%;
+  height: 125px;
+  background: linear-gradient(325deg, rgba(123, 18, 43, 0.5) 0%, rgba(204, 38, 10) 100%);
+  object-fit: contain;
+  display: flex;
+  flex-direction: row-reverse;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  width: 200px;
+  height: calc(200/0.5625)px;
+  padding-top: 5px;
+}
+
+.click {
+  transition: all 300ms ease;
+}
+
+.click:hover {
+  opacity: 0.7
+}
+
+.click:after {
+  opacity: 0.6;
+}
+
+body {
+  overflow: hidden;
+}
+
+/*
+
+search
+
+*/
+
+.search {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 30%;
+}
+
+.search__btn {
+  background-color: transparent;
+  color: white;
+  opacity: 0.5;
+  border: none;
+  font-size: 20px;
+  align-items: center;
+}
+
+.search__bar {
+  position: absolute;
+  background-color: rgb(236, 209, 197);
+  z-index: 10;
+  display: flex;
+  opacity: 0.5;
+  width: 20%;
+  height: 36%;
+  border-radius: 40px;
+  visibility: hidden;
+}
+
+.search__bar.open {
+  max-height: 45px;
+  overflow: hidden;
+  display: flex;
+  right: 17.5%;
+  opacity: 0.8;
+  border-radius: 40px;
+  visibility: visible;
+}
+
+.search__bar--input {
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+  font-size: 20px;
+  border-radius: 40px;
+  border: none;
+}
+
+input[type="text"] {
+  padding-block: 1px;
+  padding-inline: 4%;
+  border: none;
+}
+
+/*
+
+body
+
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  top: 125px;
+  background: url('https://i.redd.it/qunxfupt8p271.png') center/cover no-repeat;
+  opacity: 0.45;
+  z-index: -100;
+}
+
+/*
+
+perspective. code credit: https://codepen.io/hqdrone/pen/poyWNqX edited by me
+
+*/
+
+.perspective {
+  padding: 75px 150px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.perspective__flex {
+  display: flex;
+  margin-left: -15px;
+  margin-right: -15px;
+  transition: all 0.6s ease;
+  max-width: 100%;
+}
+
+.perspective__col {
+  z-index: 0;
+  transition: all 0.6s ease;
+  width: 50%;
+  padding: 0 15px;
+}
+
+.perspective-item {
+  color: #dfdfdf;
+  transition: all 0.6s ease;
+  background: rgba(255,255,255,0.4);
+  border-radius: 25px;
+  background: linear-gradient(325deg, rgba(204, 38, 10, 0.8) 0%, rgba(123, 18, 43) 100%);
+}
+
+.perspective-item__left {
+  display: flex;
+  flex-direction: row;
+  max-height: 60vh;
+  padding-left: 20px;
+}
+
+.perspective-item__right {
+  display: flex;
+  flex-direction: column;
+  min-height: 65%;
+  max-height: 100%;
+  justify-content: top;
+  padding: 15px 0px 0px 20px;
+}
+
+.perspective-item__info, .info-imgs, .info-basic {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.perspective-item__info {
+  width: 25%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.basic-img {
+  width: 50px;
+  height: 60px;
+  padding-bottom: 10px;
+}
+
+.info-imgs {
+  height: 30%;
+  padding-bottom: 10px;
+}
+
+.info-basic {
+  height: 70%;
+  font-size: 20px;
+  display: flex;
+}
+
+.perspective-item__title {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.perspective-item__subtitle {
+  height: 10%;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  padding-left: 20%;
+  font-style: italic;
+}
+
+.perspective-item__icon {
+  display: block;
+  margin-left: auto;
+  width: 80%;
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+.perspective-item__icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+
+.base-stats {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: auto;
+  font-size: 18px;
+  text-align: center;
+}
+
+.stats {
+  display: grid;
+  padding: 2% 10% 0 10%;
+  flex-wrap: wrap;
+  grid-template-columns: auto auto;
+  column-gap: 10%;
+  row-gap: 15%;
+  height: 100%;
+}
+
+/*
+
+animation
+
+*/
+
+.perspective__flex:hover {
+  transform: translateX(200px);
+}
+.perspective__flex:hover .perspective-item {
+  transform: perspective(700px) rotateY(-10deg) scale(0.9) rotateX(10deg);
+  opacity: 0.5;
+  color: #fff;
+  filter: blur(2px);
+  background: linear-gradient(rgba(204, 38, 10), rgb(123, 18, 43));
+}
+.perspective__flex:hover .perspective__col {
+  margin-left: -150px;
+}
+
+.perspective__flex:hover .perspective__col:hover {
+  z-index: 1;
+}
+.perspective__flex:hover .perspective__col:hover .perspective-item {
+  transform: perspective(800px) rotateY(-5deg) translateY(-10px) scale(1.2);
+  opacity: 1;
+  filter: blur(0);
+}
+
+/*
+
+responsiveness
+
+*/
+
+@media (max-width: 1280px) {
+  body {
+  overflow: scroll;
+  }
+  
+  .perspective__flex {
+    flex-direction: column;
+  }
+  .perspective__flex:hover {
+    transform: none;
+  }
+  .perspective__flex:hover .perspective__item {
+    transform: none;
+    opacity: 1;
+    filter: none;
+  }
+  .perspective__flex:hover .perspective__col {
+    margin-left: 0;
+  }
+  .perspective__flex:hover .perspective__col:hover .perspective__item {
+    transform: none;
+  }
+  .perspective__col {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .perspective-item__right {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 800px) {
+  .perspective-item__right {
+    height: 50vh
+  }
+}
+
+@media (max-width: 650px) {
+  .perspective-item {
+    display: flex;
+  }
+
+  .perspective {
+    width: 100%;
+    padding: 10px 10px;
+  }
+
+  .basic-img {
+    width: 40px;
+    height: 50px;
+  }
+
+  @media (max-width: 520px) {
+    .perspective-item__right {
+      height: 60vh;
+    }
+  }
+}
