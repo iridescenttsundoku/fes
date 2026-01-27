@@ -13,8 +13,23 @@
         <div><img class = "logo" src = "https://logos-world.net/wp-content/uploads/2020/12/Dota-2-Logo.png"></div>
         <div class = "search">
             <button class = "search__btn click" onclick = "toggleSearch()"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
+            <button class = "filter__btn click" onclick = "toggleFilter()"><i class="fa-solid fa-filter"></i></button>
             <div class = "search__bar">
                 <input class = "search__bar--input" type = "text" placeholder = "search...">
+            </div>
+            <div class = "filter__dropdown">
+                <select onchange = "handleChange()">
+                    <optgroup label = "Attributes">
+                        <option>agility</option>
+                        <option>intelligence</option>
+                        <option>strength</option>
+                        <option>all</option>
+                    </optgroup>
+                    <optgroup label = "Attack Type">
+                        <option>melee</option>
+                        <option>ranged</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
     </header>
@@ -42,10 +57,16 @@
                 </div>
                 <div class="perspective__col">
                     <div class="perspective-item perspective-item__right">
-                        <p>← spectre. favourite of a friend's. search up any hero from dota 2 and get their basic info! :)</p>
+                        <p>← spectre. favourite of a friend's. search up any hero from dota 2 and get their basic info! :)</p><br>
+                        <p>i don't know anything about dota 2 so please don't ask. i only know it through aforementioned friend.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <footer>
+        <div class>
+            <p>Made using <a href = "https://www.opendota.com">OpenDota</a>!</p>
+        </div>
+    </footer>
 </body>
