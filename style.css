@@ -48,15 +48,29 @@ a:hover {
   padding: 0 8px;
 }
 
-header {
+header, footer {
   width: 100%;
-  height: 125px;
+  min-height: 125px;
   background: linear-gradient(325deg, rgba(123, 18, 43, 0.5) 0%, rgba(204, 38, 10) 100%);
   object-fit: contain;
   display: flex;
   flex-direction: row-reverse;
-  position: sticky;
-  top: 0;
+}
+
+header {
+  width: auto;
+  justify-content: space-between;
+  position: relative;
+}
+
+footer {
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #dfdfdf;
+  position: fixed;
+  bottom: 0px;
+  z-index: -1;
 }
 
 .logo {
@@ -83,18 +97,19 @@ body {
 
 /*
 
-search
+search & filter
 
 */
 
 .search {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
-  width: 30%;
+  min-width: 30%;
+  padding-left: 15px;
 }
 
-.search__btn {
+.search__btn, .filter__btn {
   background-color: transparent;
   color: white;
   opacity: 0.5;
@@ -104,7 +119,7 @@ search
 }
 
 .search__bar {
-  position: absolute;
+  position: fixed;
   background-color: rgb(236, 209, 197);
   z-index: 10;
   display: flex;
@@ -113,13 +128,13 @@ search
   height: 36%;
   border-radius: 40px;
   visibility: hidden;
+  margin-left: 5%;
 }
 
 .search__bar.open {
   max-height: 45px;
   overflow: hidden;
   display: flex;
-  right: 17.5%;
   opacity: 0.8;
   border-radius: 40px;
   visibility: visible;
@@ -140,6 +155,28 @@ input[type="text"] {
   border: none;
 }
 
+.filter__dropdown {
+  position: fixed;
+  background-color: rgb(236, 209, 197);
+  z-index: 10;
+  display: flex;
+  opacity: 0.5;
+  width: 5%;
+  height: 36%;
+  border-radius: 40px;
+  visibility: hidden;
+  margin-left: 25.5%;
+}
+
+.filter__dropdown.open {
+  max-height: 45px;
+  overflow: hidden;
+  display: flex;
+  opacity: 0.8;
+  border-radius: 40px;
+  visibility: visible;
+}
+
 /*
 
 body
@@ -155,7 +192,6 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  top: 125px;
   background: url('https://i.redd.it/qunxfupt8p271.png') center/cover no-repeat;
   opacity: 0.45;
   z-index: -100;
@@ -182,7 +218,7 @@ perspective. code credit: https://codepen.io/hqdrone/pen/poyWNqX edited by me
 }
 
 .perspective__col {
-  z-index: 0;
+  z-index: 2;
   transition: all 0.6s ease;
   width: 50%;
   padding: 0 15px;
@@ -315,7 +351,7 @@ animation
 }
 
 .perspective__flex:hover .perspective__col:hover {
-  z-index: 1;
+  z-index: 3;
 }
 .perspective__flex:hover .perspective__col:hover .perspective-item {
   transform: perspective(800px) rotateY(-5deg) translateY(-10px) scale(1.2);
@@ -358,11 +394,37 @@ responsiveness
   .perspective-item__right {
     height: 40vh;
   }
+
+  .search__bar {
+    margin-left: 10%;
+  }
+
+  .filter__dropdown {
+    margin-left: 31%;
+  }
+}
+
+@media (max-width: 900px) {
+  .search__bar {
+    margin-left: 10%;
+  }
+
+  .filter__dropdown {
+    margin-left: 31%;
+  }
 }
 
 @media (max-width: 800px) {
   .perspective-item__right {
     height: 50vh
+  }
+
+  .search__bar {
+    margin-left: 12%;
+  }
+
+  .filter__dropdown {
+    margin-left: 33%;
   }
 }
 
@@ -384,6 +446,14 @@ responsiveness
   @media (max-width: 520px) {
     .perspective-item__right {
       height: 60vh;
+    }
+
+    .search__bar {
+      margin-left: 17%;
+    }
+
+    .filter__dropdown {
+      margin-left: 38%;
     }
   }
 }
