@@ -3,6 +3,17 @@ function toggleSearch() {
   searchBar.classList.toggle("open");
 }
 
+function toggleFilter() {
+  const searchBar = document.querySelector(".filter__dropdown");
+  searchBar.classList.toggle("open");
+}
+
+function handleChange() {
+  const filterDropdown = document.querySelector("select");
+  const option = filterDropdown.value;
+  filterDotaAPI(option);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector(".search__bar--input");
 
@@ -38,16 +49,6 @@ async function searchDotaAPI(query) {
     throw error;
   }
 }
-
-// function updateUI(hero) {
-  //update name
- // document.querySelector(".perspective-item__title")
-  //update image
-  //update roles
-  //update attributes/attack
-
-  //update stats}
-
 
 function updateUI(hero) {
   const attrImgs = {
@@ -93,4 +94,59 @@ function updateUI(hero) {
               </ul>
           </div>
   ` 
+}
+
+async function filterDotaAPI(option) {
+  try {
+    const response = await fetch(`https://api.opendota.com/api/heroStats`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error. Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const attrMap = {
+      "agility": "agi",
+      "strength": "str",
+      "intelligence": "int",
+      "all": "all"
+    };
+    const attrImgs = {
+      "agi": "https://static.wikia.nocookie.net/dota2_gamepedia/images/2/2d/Agility_attribute_symbol.png",
+      "str": "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/7a/Strength_attribute_symbol.png",
+      "int": "https://static.wikia.nocookie.net/dota2_gamepedia/images/5/5e/Intelligence_attribute_symbol.png",
+      "all": "https://static.wikia.nocookie.net/dota2_gamepedia/images/1/1c/Universal_attribute_symbol.png/"
+      };
+
+    const mappedFilter = attrMap[filter.toLowerCase()] || filter;
+    let filteredHeroes = "";
+
+    if (mappedFilter === "all") {
+      filteredHeroes = data;
+    } else if(["agi", "str", "int"].includes(mappedFilter)) {
+      filteredHeroes = data.filter(h => h.primary_attr === mappedFilter);
+    } else {
+      console.log("No heroes found with this attribute.");
+      alert("No heroes found with this attribute.");
+    }
+  
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+
+  if (filteredHeroes.length > 0) {
+    const eachHero = document.querySelector(".results");
+    eachHero.innerHTML +=
+      `<div class = "search-result">
+        <div class = "icon">
+          <img class = "search-img" src="${attrImgs[hero.primary_attr]}" alt = "agility">
+        </div>
+        <div class = "hero-name"">
+          ${hero.localized_name}
+        </div>
+      </div>`;
+  } else {
+    alert("No heroes found with this attribute.")
+  }
 }
