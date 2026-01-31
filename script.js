@@ -4,14 +4,14 @@ function toggleSearch() {
 }
 
 function toggleFilter() {
-  const searchBar = document.querySelector(".filter__dropdown");
-  searchBar.classList.toggle("open");
+  const filterDropdown = document.querySelector(".filter__dropdown");
+  filterDropdown.classList.toggle("open");
 }
 
 function handleChange() {
   const filterDropdown = document.querySelector("select");
-  const option = filterDropdown.value;
-  filterDotaAPI(option);
+  const value = filterDropdown.value;
+  filterDotaAPI(value);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,7 +38,7 @@ async function searchDotaAPI(query) {
     const hero = data.find(h => h.localized_name.toLowerCase() === query.toLowerCase());
     
     if (hero) {
-      updateUI(hero);
+      updateUI([hero]);
     } else {
       console.log("Hero not found.");
       alert("Hero not found.");
@@ -50,7 +50,7 @@ async function searchDotaAPI(query) {
   }
 }
 
-function updateUI(hero) {
+function updateUI(heroes) {
   const attrImgs = {
     "agi": "https://static.wikia.nocookie.net/dota2_gamepedia/images/2/2d/Agility_attribute_symbol.png",
     "str": "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/7a/Strength_attribute_symbol.png",
@@ -63,40 +63,56 @@ function updateUI(hero) {
     "Ranged": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/ranged.svg"
   };
 
-  // Update Image (OpenDota provides relative paths)
-  const heroImg = document.querySelector(".perspective-item__icon");
-  heroImg.innerHTML = `<img src="https://api.opendota.com${hero.img}" alt="${hero.name}"/>`
+  const perspectiveFlex = document.querySelector(".perspective__flex");
+  perspectiveFlex.innerHTML = ""; // Clear existing cards
 
-  // Update Roles
-  const rolesContainer = document.querySelector(".info-basic");
-  rolesContainer.innerHTML = hero.roles.map(role => `<p>${role}.</p><br>`).join("");
-  
-  // Update Attributes/Attack Type Icons
-  const infoImgs = document.querySelector(".info-imgs");
-  infoImgs.innerHTML = `
-    <img class="basic-img" src="${attrImgs[hero.primary_attr] || attrImgs['agi']}" alt="${hero.primary_attr}">
-    <img class="basic-img" src="${attImgs[hero.attack_type] || attImgs['Melee']}" alt="${hero.attack_type}">
-  `;
-  const rightContainer = document.querySelector(".perspective-item__right");
-  rightContainer.innerHTML = `
-    <div class="perspective-item__title">${hero.localized_name}</div>
-      <div class = "perspective-item__subtitle">base stats</div>
-          <div class = "base-stats">
-              <ul class = "stats">
-                <li class="stat">health / regen: ${hero.base_health} / ${hero.base_health_regen}</li>
-                <li class="stat">mana / regen: ${hero.base_mana} / ${hero.base_mana_regen}</li>
-                <li class="stat">armor: ${hero.base_armor}</li>
-                <li class="stat">magic resistance: ${hero.base_mr}%</li>
-                <li class="stat">attack min/max: ${hero.base_attack_min}/${hero.base_attack_max}</li>
-                <li class="stat">strength + gain: ${hero.base_str} + ${hero.str_gain}</li>
-                <li class="stat">agility + gain: ${hero.base_agi} + ${hero.agi_gain}</li>
-                <li class="stat">intelligence + gain: ${hero.base_int} + ${hero.int_gain}</li>
-              </ul>
+  heroes.forEach(hero => {
+    // Determine images
+    const primaryAttrImg = attrImgs[hero.primary_attr] || attrImgs['agi'];
+    const attackTypeImg = attImgs[hero.attack_type] || attImgs['Melee'];
+    const heroImageSrc = `https://api.opendota.com${hero.img}`;
+    const rolesHtml = hero.roles.map(role => `<p>${role}.</p><br>`).join("");
+
+    const heroCardHtml = `
+      <div class="perspective__col">
+          <div class="perspective-item perspective-item__left">
+              <div class="perspective-item__info">
+                  <div class="info-imgs">
+                      <img class="basic-img" src="${primaryAttrImg}" alt="${hero.primary_attr}"> 
+                      <img class="basic-img" src="${attackTypeImg}" alt="${hero.attack_type}">
+                  </div>
+                  <div class="info-basic">
+                      ${rolesHtml}
+                  </div>
+              </div>
+              <div class="perspective-item__icon"><img src="${heroImageSrc}" alt="${hero.localized_name}"/></div>
           </div>
-  ` 
+      </div>
+      <div class="perspective__col">
+          <div class="perspective-item perspective-item__right">
+              <div class="perspective-item__title">${hero.localized_name}</div>
+              <div class="perspective-item__subtitle">base stats</div>
+              <div class="base-stats">
+                  <ul class="stats">
+                    <li class="stat">health / regen: ${hero.base_health} / ${hero.base_health_regen}</li>
+                    <li class="stat">mana / regen: ${hero.base_mana} / ${hero.base_mana_regen}</li>
+                    <li class="stat">armor: ${hero.base_armor}</li>
+                    <li class="stat">magic resistance: ${hero.base_mr}%</li>
+                    <li class="stat">attack min/max: ${hero.base_attack_min}/${hero.base_attack_max}</li>
+                    <li class="stat">strength + gain: ${hero.base_str} + ${hero.str_gain}</li>
+                    <li class="stat">agility + gain: ${hero.base_agi} + ${hero.agi_gain}</li>
+                    <li class="stat">intelligence + gain: ${hero.base_int} + ${hero.int_gain}</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    `;
+
+    perspectiveFlex.innerHTML += heroCardHtml;
+  });
 }
 
-async function filterDotaAPI(option) {
+async function filterDotaAPI(filter) {
   try {
     const response = await fetch(`https://api.opendota.com/api/heroStats`);
 
@@ -105,48 +121,35 @@ async function filterDotaAPI(option) {
     }
 
     const data = await response.json();
+    let filteredHeroes;
+
+    // Mapping full words to API short codes if needed, or checking both
     const attrMap = {
       "agility": "agi",
       "strength": "str",
       "intelligence": "int",
       "all": "all"
     };
-    const attrImgs = {
-      "agi": "https://static.wikia.nocookie.net/dota2_gamepedia/images/2/2d/Agility_attribute_symbol.png",
-      "str": "https://static.wikia.nocookie.net/dota2_gamepedia/images/7/7a/Strength_attribute_symbol.png",
-      "int": "https://static.wikia.nocookie.net/dota2_gamepedia/images/5/5e/Intelligence_attribute_symbol.png",
-      "all": "https://static.wikia.nocookie.net/dota2_gamepedia/images/1/1c/Universal_attribute_symbol.png/"
-      };
 
     const mappedFilter = attrMap[filter.toLowerCase()] || filter;
-    let filteredHeroes = "";
 
     if (mappedFilter === "all") {
       filteredHeroes = data;
-    } else if(["agi", "str", "int"].includes(mappedFilter)) {
+    } else if (["agi", "str", "int"].includes(mappedFilter)) {
+      // Filter by Primary Attribute
       filteredHeroes = data.filter(h => h.primary_attr === mappedFilter);
     } else {
-      console.log("No heroes found with this attribute.");
-      alert("No heroes found with this attribute.");
+      // Filter by Attack Type (Melee / Ranged) - API matches exact string usually
+      filteredHeroes = data.filter(h => h.attack_type.toLowerCase() === filter.toLowerCase());
     }
-  
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
 
-  if (filteredHeroes.length > 0) {
-    const eachHero = document.querySelector(".results");
-    eachHero.innerHTML +=
-      `<div class = "search-result">
-        <div class = "icon">
-          <img class = "search-img" src="${attrImgs[hero.primary_attr]}" alt = "agility">
-        </div>
-        <div class = "hero-name"">
-          ${hero.localized_name}
-        </div>
-      </div>`;
-  } else {
-    alert("No heroes found with this attribute.")
+    if (filteredHeroes.length > 0) {
+      updateUI(filteredHeroes);
+    } else {
+      alert("No heroes found for this filter.");
+    }
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
   }
 }
