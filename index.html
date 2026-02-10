@@ -1,76 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dota 2 api</title>
-    <link rel = "stylesheet" href = "style.css">
-    <script src = "script.js" type = "text/javascript"></script>
-    <script src = "https://kit.fontawesome.com/a95b8b142d.js" crossorigin = "anonymous"></script>
-</head>
-<body>
-    <header>
-        <div><img class = "logo" src = "https://logos-world.net/wp-content/uploads/2020/12/Dota-2-Logo.png"></div>
-        <div class = "search">
-            <button class = "search__btn click" onclick = "toggleSearch()"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
-            <button class = "filter__btn click" onclick = "toggleFilter()"><i class="fa-solid fa-filter"></i></button>
-            <div class = "search__bar">
-                <input class = "search__bar--input" type = "text" placeholder = "search...">
-            </div>
-            <div class = "filter__dropdown">
-                <select onchange = "handleChange()">
-                    <option>agility</option>
-                    <option>intelligence</option>
-                    <option>strength</option>
-                    <option>all</option>
-                </select>
-            </div>
-        </div>
-    </header>
-    <section id = "search-results">
-        <div class = "container">
-            <div class = "row">
-                <div class = "results">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id = "cards">
-        <div class="perspective">
-            <div class="perspective__flex">
-                <div class="perspective__col">
-                    <div class="perspective-item perspective-item__left">
-                        <div class = "perspective-item__info">
-                            <div class = "info-imgs">
-                                <img class = "basic-img" src = "https://static.wikia.nocookie.net/dota2_gamepedia/images/2/2d/Agility_attribute_symbol.png" alt = "agility"> 
-                                <img class = "basic-img" src = "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/icons/melee.svg" alt = "melee">
-                                <!--dota 2 attack icons: https://dotacoach.gg/en/agility-->
-                            </div>
-                            <div class = "info-basic">
-                                <p>Carry.</p>
-                                <br>
-                                <p>Durable.</p>
-                                <br>
-                                <p>Escape.</p>
-                            </div>
-                        </div>
-                        <div class="perspective-item__icon"><img src="https://cdn.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/spectre.png" alt=""/></div>
-                    </div>
-                </div>
-                <div class="perspective__col">
-                    <div class="perspective-item perspective-item__right">
-                        <p>← spectre. favourite of a friend's. search up any hero from dota 2 and get their basic info! :)</p><br>
-                        <p>i don't know anything about dota 2 so please don't ask. i only know it through aforementioned friend.</p>
-                    </div>
-                </div>
-            </div>
+<html lang="en">
+
+<head><script type='text/javascript'></script>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>pokeapi project copy</title>
+     <link rel="stylesheet" href="combined.css">
+     <script src="combined.js" type="text/javascript"></script>
+     <script src="https://kit.fontawesome.com/a95b8b142d.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+     <header>
+        <button onclick = "toggleHeading()"><img src = "https://cdn-icons-png.freepik.com/256/189/189012.png" class = "dex-logo"></button>
+        <!--<h1 class = "dex-title">Pokédex</h1>-->
+        <div class = "heading">
+            <h1 class = "head-top">Look up any Pokémon and get their type(s), habitat and base stats</h1>
         </div>
-    </section>
-    <footer>
-        <div class>
-            <p>Made using <a href = "https://www.opendota.com">OpenDota</a>!</p>
-        </div>
-    </footer>
+      </header>
+     <section id="landing" onmousemove="moveBackground(event)">
+         <div class="container">
+             <div class="row">
+                 <div class="matrix-container">
+                    <input type="text" placeholder="«POKÉMON»" />
+                     <div class="rain"></div>
+                 </div>
+             </div>
+         </div>
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/710.png" class="shape shape--0">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/035.png" class="shape shape--1">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/1017.png" class="shape shape--2">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/035.png" class="shape shape--3">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/152.png" class="shape shape--4">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/035.png" class="shape shape--5">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/710.png" class="shape shape--6">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/1017.png" class="shape shape--7">
+         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/152.png" class="shape shape--8">
+     </section>
 </body>
+
+</html>
