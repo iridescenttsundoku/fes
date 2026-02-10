@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Press+Start+2P&display=swap');
-
 * {
-  font-family: "DM Serif Display", serif;
+  font-family: Helvetica, sans-serif;
   font-weight: 400;
   font-style: normal;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   max-width: 100%;
-  height: auto;
 }
 
 html {
@@ -32,6 +29,48 @@ a {
   color: inherit;
 }
 
+button {
+  background: transparent;
+  border: none;
+  animation: blink 5s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.heading {
+  position: absolute;
+  background-color: transparent;
+  z-index: 6;
+  display: flex;
+  opacity: 1;
+  visibility: hidden;
+  left: 20%;
+}
+
+.heading.open {
+  max-height: 75px;
+  overflow: hidden;
+  display: flex;
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.head-top {
+  font-size: 50px;
+  color: rgb(231, 182, 182);
+  left: 50%;
+}
+
 a:hover {
   text-decoration: underline;
   color: rgb(92, 62, 48);
@@ -48,35 +87,43 @@ a:hover {
   padding: 0 8px;
 }
 
-header, footer {
+header {
   width: 100%;
-  min-height: 125px;
-  background: linear-gradient(325deg, rgba(123, 18, 43, 0.5) 0%, rgba(204, 38, 10) 100%);
-  object-fit: contain;
+  height: auto;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  padding: 30px 30px 0px 30px;
+  justify-content: space-between;
 }
 
-header {
-  width: auto;
-  justify-content: space-between;
+.dex-logo {
+  width: 100px;
+  height: 100px;
+}
+
+.dex-title {
+  font-size: 50px;
+  color: darkblue;
+}
+
+body {
   position: relative;
 }
 
-footer {
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  color: #dfdfdf;
+body:before {
   position: fixed;
-  bottom: 0px;
-  z-index: -1;
+  content: "";
+  inset: 0;
+  background: url('https://legends.pokemon.com/_next/image?url=%2Fimages%2Fpages%2Fstory-world%2Fpokemon%2Fpokemon-header-s-2x.jpg&w=3840&q=80') no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.8;
+  z-index: -100;
+  /*top: 323px;*/
 }
 
-.logo {
-  width: 200px;
-  height: calc(200/0.5625)px;
-  padding-top: 5px;
+span { 
+  text-shadow: -0.06em 0 rgba(6, 56, 97, 0.2),  0.06em 0 rgba(6, 20, 68, 0.5); /* This creates the 3D effect, pretty easy, eh? */
+  letter-spacing: 0.08em; /* make sure the letters don't overlap */
 }
 
 .click {
@@ -91,264 +138,253 @@ footer {
   opacity: 0.6;
 }
 
-body {
-  overflow: hidden;
+.pkmn__header {
+  align-content: center;
+  justify-content: center;
+  font-size: 100px;
+  display: flex;
+}
+
+#landing {
+  z-index: -10;
 }
 
 /*
 
-search & filter
+title
+
+credit for text and background effect!!!! https://codepen.io/nefejames/pen/azooaqw
 
 */
 
-.search {
+.matrix-container {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 50%;
+  padding-top: 7%;
+  z-index: 2; /* Ensure it stays above the rain effect */
+}
+
+input {
+  position: relative;
+  z-index: 2; /* Ensure it stays above the rain effect */
+  background: transparent;
+  border: none;
+  height: 150px;
+  width: 400px;
+}
+
+::placeholder {
+  color: rgb(13, 61, 80);
+  font-size: 80px;
+  font-family: monospace;
+  text-shadow: 0 0 10px rgb(0, 110, 255), 0 0 20px rgb(0, 60, 255), 0 0 30px rgb(0, 60, 255);
+}
+
+.input::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: glitch 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -2px);
+  color: rgb(55, 0, 255);
+  text-shadow: 0 0 5px rgb(0, 153, 255), 0 0 15px #0f0;
+}
+
+.rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 102, 255, 0.1) 0,
+    rgba(0, 162, 255, 0.2) 2px,
+    transparent 4px
+  );
+  animation: rain 10s linear infinite;
+  z-index: 1; /* Place it behind the text */
+}
+
+/* Animation for the rain effect */
+@keyframes rain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Glitch effect for the text */
+@keyframes glitch {
+  0%, 100% {
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(0);
+  }
+  33% {
+    clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
+    transform: translate(-5px, -5px);
+  }
+  66% {
+    clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+    transform: translate(5px, 5px);
+  }
+}
+
+/*
+
+btns
+
+*/
+
+.btn {
+  padding-right: 8%;
+  padding-left: 8%;
+}
+
+.pkmn__btns {
+  justify-content: center;
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 30%;
-  padding-left: 15px;
 }
 
 .search__btn, .filter__btn {
-  background-color: transparent;
+  width: 200px;
+  height: 50px;
+  border-radius: 40%;
+  background: rgba(73, 132, 160, 0.7);
   color: white;
-  opacity: 0.5;
-  border: none;
-  font-size: 20px;
-  align-items: center;
-}
-
-.search__bar {
-  position: fixed;
-  background-color: rgb(236, 209, 197);
-  z-index: 10;
-  display: flex;
-  opacity: 0.5;
-  width: 20%;
-  height: 36%;
-  border-radius: 40px;
-  visibility: hidden;
-  margin-left: 5%;
-}
-
-.search__bar.open {
-  max-height: 45px;
-  overflow: hidden;
-  display: flex;
-  opacity: 0.8;
-  border-radius: 40px;
-  visibility: visible;
-}
-
-.search__bar--input {
-  width: 100%;
-  height: 100%;
-  opacity: 0.85;
-  font-size: 20px;
-  border-radius: 40px;
-  border: none;
-}
-
-input[type="text"] {
-  padding-block: 1px;
-  padding-inline: 4%;
-  border: none;
-}
-
-.filter__dropdown {
-  position: fixed;
-  background-color: rgb(236, 209, 197);
-  z-index: 10;
-  display: flex;
-  opacity: 0.5;
-  width: 5%;
-  height: 36%;
-  border-radius: 40px;
-  visibility: hidden;
-  margin-left: 25.5%;
-}
-
-.filter__dropdown.open {
-  max-height: 45px;
-  overflow: hidden;
-  display: flex;
-  opacity: 0.8;
-  border-radius: 40px;
-  visibility: visible;
+  font-size: 25px;
 }
 
 /*
 
-body
+shapes
 
 */
 
-body {
-  margin: 0;
-  padding: 0;
-}
-
-body::before {
-  content: "";
+.shape {
   position: fixed;
-  inset: 0;
-  background: url('https://i.redd.it/qunxfupt8p271.png') center/cover no-repeat;
-  opacity: 0.45;
-  z-index: -100;
-}
-
-/*
-
-filter
-
-*/
-
-/*
-
-search
-
-*/
-
-.results {
-  width: 100%;
-  height: 80%;
-}
-
-.search-result {
-  color: #dfdfdf;
-  transition: all 0.6s ease;
-  background: rgba(255,255,255,0.4);
-  border-radius: 25px;
-  background: linear-gradient(325deg, rgba(204, 38, 10, 0.8) 0%, rgba(123, 18, 43) 100%);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 250px;
-  max-height: 100px;
-  margin: 10px 0 0 25%;
-}
-
-.search-img {
   width: 50px;
   height: 50px;
 }
 
-.hero-name {
-  font-size: 25px;
-  text-decoration: underline;
-  font-style: oblique;
+.shape--0 {
+  left: 5vw;
+  top: 15vh;
 }
 
-.search-result:hover {
-  transform: perspective(700px) rotateY(10deg) scale(1.1) rotateX(10deg);
-  color: #fff;
-  background: linear-gradient(rgba(204, 38, 10), rgb(123, 18, 43));
+.shape--1 {
+  left: 50vw;
+  top: 15vh;
 }
 
-/*
+.shape--2 {
+  left: 80vw;
+  top: 15vh;
+}
 
-perspective. code credit: https://codepen.io/hqdrone/pen/poyWNqX edited by me
+.shape--3 {
+  left: 5vw;
+  top: 50vh;
+}
 
-*/
+.shape--4 {
+  left: 50vw;
+  top: 50vh;
+}
+
+.shape--5 {
+  left: 80vw;
+  top: 50vh;
+}
+
+.shape--6 {
+  left: 5vw;
+  top: 80vh;
+}
+
+.shape--7 {
+  left: 50vw;
+  top: 80vh;
+}
+
+.shape--8 {
+  left: 80vw;
+  top: 80vh;
+}
+
+#dex-left {
+  width: 52vw;
+  height: 100%;
+  display: flex;
+  justify-self: left;
+  padding-left: 50px;
+  z-index: 0;
+}
+
+#dex-right {
+  width: 48vw;
+  height: 100%;
+  display: flex;
+  justify-self: right;
+  z-index: 0;
+}
+
+/*code: https://codepen.io/hqdrone/pen/poyWNqX  */
 
 .perspective {
-  padding: 25px 150px;
-  max-width: 100%;
-  max-height: 100%;
+  padding: 100px 5px;
+  overflow: hidden;
+  width: 100%;
+  height: 80vh;
+  margin-top: 15vh;
 }
 
 .perspective__flex {
   display: flex;
-  margin-left: -15px;
-  margin-right: -15px;
   transition: all 0.6s ease;
-  max-width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .perspective__col {
-  z-index: 2;
+  z-index: 0;
   transition: all 0.6s ease;
-  width: 50%;
+  width: 100%;
   padding: 0 15px;
 }
 
-.perspective-item {
-  color: #dfdfdf;
+.perspective__item {
+  padding: 25px;
   transition: all 0.6s ease;
-  background: rgba(255,255,255,0.4);
+  background: rgba(147, 179, 204, 0.4);
   border-radius: 25px;
-  background: linear-gradient(325deg, rgba(204, 38, 10, 0.8) 0%, rgba(123, 18, 43) 100%);
+  background: linear-gradient(325deg, rgba(63, 94, 251, 0.2) 0%, rgba(18, 5, 88, 0.2) 100%);
 }
 
-.perspective-item__left {
-  display: flex;
-  flex-direction: row;
-  max-height: 60vh;
-  padding-left: 20px;
-}
-
-.perspective-item__right {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: top;
-  padding: 15px 0px 0px 20px;
-}
-
-.perspective-item__info, .info-imgs, .info-basic {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-}
-
-.perspective-item__info {
-  width: 25%;
-  height: 100%;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-}
-
-.basic-img {
-  width: 50px;
-  height: 60px;
-  padding-bottom: 10px;
-}
-
-.info-imgs {
-  height: 30%;
-  padding: 15px;
-}
-
-.info-basic {
-  height: 70%;
-  font-size: 20px;
-  display: flex;
-}
-
-.perspective-item__title {
-  font-weight: bold;
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.perspective-item__subtitle {
-  height: 10%;
-  font-size: 15px;
-  display: flex;
-  justify-content: center;
-  padding-left: 20%;
-  font-style: italic;
+.perspective-item {
+  color: #fff;
 }
 
 .perspective-item__icon {
   display: block;
-  margin-left: auto;
-  width: 80%;
+  margin: 0 auto 30px;
+  width: 70%;
+  height: auto;
+  border-radius: 50%;
   overflow: hidden;
   transition: all 0.6s ease;
+  object-fit: contain;
 }
 .perspective-item__icon img {
   display: block;
@@ -360,149 +396,57 @@ perspective. code credit: https://codepen.io/hqdrone/pen/poyWNqX edited by me
   object-position: center;
 }
 
-.base-stats {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  height: auto;
-  font-size: 18px;
-  text-align: center;
-}
-
-.stats {
-  display: grid;
-  padding: 2% 10% 0 10%;
-  flex-wrap: wrap;
-  grid-template-columns: auto auto;
-  column-gap: 10%;
-  row-gap: 15%;
-  height: 100%;
-}
-
-/*
-
-animation
-
-*/
-
-.perspective__flex:hover {
-  transform: translateX(200px);
-}
-.perspective__flex:hover .perspective-item {
-  transform: perspective(700px) rotateY(-10deg) scale(0.9) rotateX(10deg);
+.perspective__flex .perspective__item {
+  transform: perspective(800px) rotateY(25deg) scale(0.9) rotateX(100deg);
   opacity: 0.5;
-  color: #fff;
-  filter: blur(2px);
-  background: linear-gradient(rgba(204, 38, 10), rgb(123, 18, 43));
-}
-.perspective__flex:hover .perspective__col {
-  margin-left: -150px;
 }
 
-.perspective__flex:hover .perspective__col:hover {
-  z-index: 3;
-}
-.perspective__flex:hover .perspective__col:hover .perspective-item {
-  transform: perspective(800px) rotateY(-5deg) translateY(-10px) scale(1.2);
+.perspective__flex .perspective__col .perspective__item {
+  transform: perspective(800px) rotateY(15deg) translateY(-50px) rotateX(10deg) scale(1);
   opacity: 1;
-  filter: blur(0);
 }
 
 /*
 
-responsiveness
+pokedex info
 
 */
 
-@media (max-width: 1280px) {
-  body {
-  overflow: scroll;
-  }
-  
-  .perspective__flex {
-    flex-direction: column;
-  }
-  .perspective__flex:hover {
-    transform: none;
-  }
-  .perspective__flex:hover .perspective__item {
-    transform: none;
-    opacity: 1;
-    filter: none;
-  }
-  .perspective__flex:hover .perspective__col {
-    margin-left: 0;
-  }
-  .perspective__flex:hover .perspective__col:hover .perspective__item {
-    transform: none;
-  }
-  .perspective__col {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  .perspective-item__right {
-    height: 40vh;
-  }
-
-  .search__bar {
-    margin-left: 10%;
-  }
-
-  .filter__dropdown {
-    margin-left: 31%;
-  }
+.poke-info {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(325deg, rgba(72, 86, 158, 0.75) 0%, rgba(143, 128, 228, 0.1) 100%);
+  padding: 50px;
+  margin-top: 25vh;
+  border-radius: 50px;
+  box-shadow: 20px 75px rgba(75, 46, 240, 0.1), 40px 150px rgba(46, 82, 240, 0.1), 60px 200px rgba(72, 139, 238, 0.1),
+              20px -75px rgba(75, 46, 240, 0.1), 40px -150px rgba(46, 82, 240, 0.1), 60px -200px rgba(72, 139, 238, 0.1);         
 }
 
-@media (max-width: 900px) {
-  .search__bar {
-    margin-left: 10%;
-  }
-
-  .filter__dropdown {
-    margin-left: 31%;
-  }
+h2 {
+  font-size: 80px;
 }
 
-@media (max-width: 800px) {
-  .perspective-item__right {
-    height: 50vh
-  }
-
-  .search__bar {
-    margin-left: 12%;
-  }
-
-  .filter__dropdown {
-    margin-left: 33%;
-  }
+.poke-type {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  padding-bottom: 10px;
 }
 
-@media (max-width: 650px) {
-  .perspective-item {
-    display: flex;
-  }
-
-  .perspective {
-    width: 100%;
-    padding: 10px 10px;
-  }
-
-  .basic-img {
-    width: 40px;
-    height: 50px;
-  }
-
-  @media (max-width: 520px) {
-    .perspective-item__right {
-      height: 60vh;
-    }
-
-    .search__bar {
-      margin-left: 17%;
-    }
-
-    .filter__dropdown {
-      margin-left: 38%;
-    }
-  }
+.poke-hab-gen {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
 }
+
+.poke-taxonomy {
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+
+footer
+
+*/
