@@ -2,7 +2,7 @@
 
 <html lang="en">
 
-<head><script type='text/javascript'></script>
+<head><script type="text/javascript"></script>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>pokeapi project copy</title>
@@ -13,33 +13,84 @@
 </head>
 
 <body>
-     <header>
+    <header>
         <button onclick = "toggleHeading()"><img src = "https://cdn-icons-png.freepik.com/256/189/189012.png" class = "dex-logo"></button>
         <!--<h1 class = "dex-title">Pokédex</h1>-->
         <div class = "heading">
-            <h1 class = "head-top">Look up any Pokémon and get their type(s), habitat and base stats</h1>
+            <h1 class = "head-top">Look up any Pokémon or any type :]</h1>
         </div>
-      </header>
-     <section id="landing" onmousemove="moveBackground(event)">
-         <div class="container">
-             <div class="row">
-                 <div class="matrix-container">
-                    <input type="text" placeholder="«POKÉMON»" />
-                     <div class="rain"></div>
-                 </div>
-             </div>
-         </div>
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/710.png" class="shape shape--0">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/035.png" class="shape shape--1">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/1017.png" class="shape shape--2">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/035.png" class="shape shape--3">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/152.png" class="shape shape--4">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/035.png" class="shape shape--5">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/710.png" class="shape shape--6">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/1017.png" class="shape shape--7">
-         <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/152.png" class="shape shape--8">
-     </section>
+    </header>
+    <section id="landing" onmousemove="moveBackground(event)">
+        <div class="container">
+            <div class="row">
+                <div class="matrix-container">
+                    <div class="rain"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class = "dex-entry">
+        <section id = "dex-left">
+            <div class = "container">
+                <div class = "row">
+                    <div class="perspective">
+                        <div class="perspective__flex">
+                            <div class="perspective__col">
+                                <div class="perspective__item">
+                                    <div class="perspective__icon"><img src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/e/e7/latest/20190605154030/Artwork_de_Scorbunny.png/800px-Artwork_de_Scorbunny.png?20190605154030" alt=""/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id = "dex-right">
+            <!--name, type, habitat? gen?-->
+            <div class = "container">
+                <div class = "row">
+                    <div class = "perspective">
+                        <div class = "perspective__flex">
+                            <div class = "perspective__col">
+                                <div class = "perspective-item">
+                                    <div class = "perspective__top">
+                                        <div class = "perspective__stats">
+                                            <div class = "stats-header">
+                                                <h2 class = "pkmn-species">Scorbunny</h2>
+                                                <div class = "stats-type">
+                                                    <figure class = "pkmn-type"><img src = "https://basara-nekki.weebly.com/uploads/5/4/7/2/5472242/type-fire_1.png"></figure>
+                                                </div>
+                                            </div>
+                                            <div class = "stats-id">
+                                                <div class = "stats-num">
+                                                    <p>No. 813</p>
+                                                </div>
+                                                <div class = "stats-region">
+                                                    <p>Galar</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class = "perspective__order">
+                                            <div class = "arrows">
+                                                <div class = "arrow-before" onclick = "prevPKMN()"><i class="fa-solid fa-arrow-left-long"></i></div>
+                                                <div class = "arrow-after" onclick = "nextPKMN()"><i class="fa-solid fa-arrow-right-long"></i></div>
+                                            </div>
+                                            <div class = "names">
+                                                <p>Rillaboom</p>
+                                                <p>Raboot</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 
 </html>
-
