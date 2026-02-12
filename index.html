@@ -20,10 +20,11 @@
             <h1 class = "head-top">Look up any Pokémon or any type :]</h1>
         </div>
     </header>
-    <section id="landing" onmousemove="moveBackground(event)">
+    <section id="landing">
         <div class="container">
             <div class="row">
                 <div class="matrix-container">
+                    <input type="text" placeholder="«POKÉMON»" />
                     <div class="rain"></div>
                 </div>
             </div>
@@ -32,62 +33,15 @@
 
     <div class = "dex-entry">
         <section id = "dex-left">
-            <div class = "container">
-                <div class = "row">
-                    <div class="perspective">
-                        <div class="perspective__flex">
-                            <div class="perspective__col">
-                                <div class="perspective__item">
-                                    <div class="perspective__icon"><img src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/e/e7/latest/20190605154030/Artwork_de_Scorbunny.png/800px-Artwork_de_Scorbunny.png?20190605154030" alt=""/></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class = "dex-left">
+                
             </div>
         </section>
 
         <section id = "dex-right">
             <!--name, type, habitat? gen?-->
-            <div class = "container">
-                <div class = "row">
-                    <div class = "perspective">
-                        <div class = "perspective__flex">
-                            <div class = "perspective__col">
-                                <div class = "perspective-item">
-                                    <div class = "perspective__top">
-                                        <div class = "perspective__stats">
-                                            <div class = "stats-header">
-                                                <h2 class = "pkmn-species">Scorbunny</h2>
-                                                <div class = "stats-type">
-                                                    <figure class = "pkmn-type"><img src = "https://basara-nekki.weebly.com/uploads/5/4/7/2/5472242/type-fire_1.png"></figure>
-                                                </div>
-                                            </div>
-                                            <div class = "stats-id">
-                                                <div class = "stats-num">
-                                                    <p>No. 813</p>
-                                                </div>
-                                                <div class = "stats-region">
-                                                    <p>Galar</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class = "perspective__order">
-                                            <div class = "arrows">
-                                                <div class = "arrow-before" onclick = "prevPKMN()"><i class="fa-solid fa-arrow-left-long"></i></div>
-                                                <div class = "arrow-after" onclick = "nextPKMN()"><i class="fa-solid fa-arrow-right-long"></i></div>
-                                            </div>
-                                            <div class = "names">
-                                                <p>Rillaboom</p>
-                                                <p>Raboot</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class = "dex-right">
+                
             </div>
         </section>
     </div>
