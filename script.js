@@ -113,7 +113,7 @@ function updateType(typeData.pokemon) {
   const resultsList = document.querySelector(.results);
   resultsList.innerHTML = "";
 
-  typeData.pokemon.forEach(pkmn => 
+  typeData.pokemon.forEach(pkmn => {
     resultHTML = `
       <div class = "result-sprite">
         <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png" alt = "scorbunny sprite">
@@ -129,6 +129,7 @@ function updateType(typeData.pokemon) {
       </div>
       `;
       resultsList.innerHTML += resultHTML;
+  }
   );
 }
 
