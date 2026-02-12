@@ -19,11 +19,17 @@ function moveBackground(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.querySelector(".matrix-text");
+  const searchInput = document.querySelector(".matrix-container");
 
   searchInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       searchPokeAPI(e.target.value);
+      searchInput.innerHTML = `
+        <div class = "matrix__search">
+          <input type="text" placeholder="«POKÉMON»" />
+          <div class="rain"></div>
+        </div>
+      `;
     }
   });
 });
@@ -61,7 +67,7 @@ async function searchPokeAPI(query) {
 function updatePKMN([data]) {
   const dexLeft = document.querySelector(".dex-left");
   dexLeft.innerHTML = ""; // Clear existing cards
-  const iconHTML = `<div class = "container">
+  const iconsHTML = `<div class = "container">
                     <div class = "row">
                         <div class="perspective">
                             <div class="perspective__flex">
@@ -98,13 +104,13 @@ function updatePKMN([data]) {
                             <div class = "perspective__stats">
                                 <div class = "stats-header">
                                     <h2 class = "pkmn-species">${data.name}</h2>
-                                    <div class = "stats-type">
-                                        <figure class = "pkmn-type"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeID}.png"></figure>
-                                    </div>
                                 </div>
                                 <div class = "stats-id">
                                     <div class = "stats-num">
                                         <p>No. ${data.id}</p>
+                                    </div>
+                                    <div class = "stats-type">
+                                        <figure class = "pkmn-type"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeID}.png"></figure>
                                     </div>
                                 </div>
                             </div>
@@ -132,23 +138,23 @@ function updatePKMN([data]) {
 
 //make updateType
 
-function updateType(typeData.pokemon) {
+function updateType(typeData) {
   const resultsList = document.querySelector(".results");
   resultsList.innerHTML = "";
 
-  const urlSplit = typeData.pokemon.url[1].split("/");
+  const urlSplit = pokemon.url[1].split("/");
   const pkmnID = urlSplit[4];
 
-  typeData.pokemon.forEach(pkmn => {
+  pokemon.forEach(pokemon => {
     resultHTML = `
       <div class = "result-sprite">
         <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmnID}.png" alt = "scorbunny sprite">
       </div>
       <div class = "result-info">
         <div class = "result-type">
-          <figure class = "result-type__img"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeData.id}.png"></figure>
+          <figure class = "result-type__img"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${id}.png"></figure>
         </div>
-        <h2 class = "result-species">${typeData.pokemon.name}</h2>
+        <h2 class = "result-species">${pokemon.pokemon.name}</h2>
         <div class = "result-id">
           <p>No. ${pkmnID}</p>
         </div>
