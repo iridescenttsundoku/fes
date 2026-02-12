@@ -7,15 +7,15 @@ function toggleHeading() {
 }
 
 function moveBackground(event) {
-    const shapes = document.querySelectorAll(".shape");
-    const x = event.clientX * scaleFactor;
-    const y = event.clientY * scaleFactor;
+  const shapes = document.querySelectorAll(".shape");
+  const x = event.clientX * scaleFactor;
+  const y = event.clientY * scaleFactor;
 
-    for (let i = 0; i < shapes.length; ++i) {
-        const isOdd = i % 2 !== 0;
-        const boolOdd = isOdd ? -1 : 1 ;
-        shapes[i].style.transform = `translate(${x * boolOdd}px, ${y * boolOdd}px) rotate(${x * boolOdd * 10}deg)`
-    }
+  for (let i = 0; i < shapes.length; ++i) {
+    const isOdd = i % 2 !== 0;
+    const boolOdd = isOdd ? -1 : 1 ;
+    shapes[i].style.transform = `translate(${x * boolOdd}px, ${y * boolOdd}px) rotate(${x * boolOdd * 10}deg)`
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -58,14 +58,26 @@ async function searchPokeAPI(query) {
 
 //make updatePKMN
 
-function updatePKMN([[data]]) {
-  const dexLeft = document.querySelector(".perspective__icon");
+function updatePKMN([data]) {
+  const dexLeft = document.querySelector(".dex-left");
   dexLeft.innerHTML = ""; // Clear existing cards
-  const iconHTML = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png" alt=""/>`;
+  const iconHTML = `<div class = "container">
+                    <div class = "row">
+                        <div class="perspective">
+                            <div class="perspective__flex">
+                                <div class="perspective__col">
+                                    <div class="perspective__item">
+                                        <div class="perspective__icon"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png" alt=""/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
 
   dexLeft.innerHTML += iconsHTML;
 
-  const dexRight = document.querySelector(".perspective__top");
+  const dexRight = document.querySelector(".dex-right");
   dexRight.innerHTML = "";
 
   const typeIDArray = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "stellar"];
@@ -76,30 +88,41 @@ function updatePKMN([[data]]) {
   const nextID = data.id + 1;
 
   const entryHTML = `
-  <div class = "perspective__stats">
-    <div class = "stats-header">
-      <h2 class = "pkmn-species">${data.name}</h2>
-      <div class = "stats-type">
-        <figure class = "pkmn-type"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeID}.png"></figure>
-      </div>
-    </div>
-    <div class = "stats-id">
-      <div class = "stats-num">
-        <p>No. ${data.id}</p>
-      </div>
-      <div class = "stats-region">
-        <p>Galar</p>
-      </div>
-    </div>
-  </div>
-  <div class = "perspective__order">
-    <div class = "arrows">
-      <div class = "arrow-before" onclick = "prevPKMN()"><i class="fa-solid fa-arrow-left-long"></i></div>
-      <div class = "arrow-after" onclick = "nextPKMN()"><i class="fa-solid fa-arrow-right-long"></i></div>
-    </div>
-    <div class = "names">
-      <p>${prevID}</p>
-      <p>${nextID}</p>
+  <div class = "container">
+    <div class = "row">
+        <div class = "perspective">
+            <div class = "perspective__flex">
+                <div class = "perspective__col">
+                    <div class = "perspective-item">
+                        <div class = "perspective__top">
+                            <div class = "perspective__stats">
+                                <div class = "stats-header">
+                                    <h2 class = "pkmn-species">${data.name}</h2>
+                                    <div class = "stats-type">
+                                        <figure class = "pkmn-type"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeID}.png"></figure>
+                                    </div>
+                                </div>
+                                <div class = "stats-id">
+                                    <div class = "stats-num">
+                                        <p>No. ${data.id}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "perspective__order">
+                                <div class = "arrows">
+                                    <div class = "arrow-before" onclick = "prevPKMN()"><i class="fa-solid fa-arrow-left-long"></i></div>
+                                    <div class = "arrow-after" onclick = "nextPKMN()"><i class="fa-solid fa-arrow-right-long"></i></div>
+                                </div>
+                                <div class = "names">
+                                    <p>${prevID}</p>
+                                    <p>${nextID}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
   `;
@@ -110,13 +133,16 @@ function updatePKMN([[data]]) {
 //make updateType
 
 function updateType(typeData.pokemon) {
-  const resultsList = document.querySelector(.results);
+  const resultsList = document.querySelector(".results");
   resultsList.innerHTML = "";
+
+  const urlSplit = typeData.pokemon.url[1].split("/");
+  const pkmnID = urlSplit[4];
 
   typeData.pokemon.forEach(pkmn => {
     resultHTML = `
       <div class = "result-sprite">
-        <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png" alt = "scorbunny sprite">
+        <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmnID}.png" alt = "scorbunny sprite">
       </div>
       <div class = "result-info">
         <div class = "result-type">
@@ -124,7 +150,7 @@ function updateType(typeData.pokemon) {
         </div>
         <h2 class = "result-species">${typeData.pokemon.name}</h2>
         <div class = "result-id">
-          <p>No. ${data.id}</p>
+          <p>No. ${pkmnID}</p>
         </div>
       </div>
       `;
