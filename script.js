@@ -51,7 +51,7 @@ async function searchPokeAPI(query) {
     
     if (response.ok) {
       const typeData = await response.json();
-      updateType(typeData.pokemon);
+      updateType(typeData);
       return;
     }
 
@@ -65,6 +65,8 @@ async function searchPokeAPI(query) {
 //make updatePKMN
 
 function updatePKMN([data]) {
+  const dexResults = document.querySelector(".dex-results");
+  dexResults.innerHTML = "";
   const dexLeft = document.querySelector(".dex-left");
   dexLeft.innerHTML = ""; // Clear existing cards
   const iconsHTML = `<div class = "container">
@@ -140,23 +142,24 @@ function updatePKMN([data]) {
 
 function updateType(typeData) {
   const resultsList = document.querySelector(".results");
-  resultsList.innerHTML = "";
 
-  const urlSplit = pokemon.url[1].split("/");
+  const urlSplit = pokemon.pokemon.url[1].split("/");
   const pkmnID = urlSplit[4];
 
-  pokemon.forEach(pokemon => {
+  typeData.forEach(pokemon => {
     resultHTML = `
-      <div class = "result-sprite">
-        <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmnID}.png" alt = "scorbunny sprite">
-      </div>
-      <div class = "result-info">
-        <div class = "result-type">
-          <figure class = "result-type__img"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${id}.png"></figure>
+      <div class = "result">
+        <div class = "result-sprite">
+          <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmnID}.png" alt = "${pokemon.pokemon.name} sprite">
         </div>
-        <h2 class = "result-species">${pokemon.pokemon.name}</h2>
-        <div class = "result-id">
-          <p>No. ${pkmnID}</p>
+        <div class = "result-info">
+          <div class = "result-type">
+            <figure class = "result-type__img"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeData.id}.png"></figure>
+          </div>
+          <h2 class = "result-species">${pokemon.pokemon.name}</h2>
+          <div class = "result-id">
+            <p>No. ${pkmnID}</p>
+          </div>
         </div>
       </div>
       `;
