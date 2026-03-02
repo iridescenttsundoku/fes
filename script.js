@@ -143,14 +143,11 @@ function updatePKMN([data]) {
 function updateType(typeData) {
   const resultsList = document.querySelector(".results");
 
-  const urlSplit = pokemon.pokemon.url[1].split("/");
-  const pkmnID = urlSplit[4];
-
-  typeData.forEach(pokemon => {
+  typeData.pokemon.forEach((pokemon) => {
     resultHTML = `
       <div class = "result">
         <div class = "result-sprite">
-          <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmnID}.png" alt = "${pokemon.pokemon.name} sprite">
+          <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemon.url.split("/")[6]}.png" alt = "${pokemon.pokemon.name} sprite">
         </div>
         <div class = "result-info">
           <div class = "result-type">
@@ -158,14 +155,13 @@ function updateType(typeData) {
           </div>
           <h2 class = "result-species">${pokemon.pokemon.name}</h2>
           <div class = "result-id">
-            <p>No. ${pkmnID}</p>
+            <p>No. ${pokemon.pokemon.url.split("/")[6]}</p>
           </div>
         </div>
       </div>
       `;
-      resultsList.innerHTML += resultHTML;
-  }
-  );
+    resultsList.innerHTML += resultHTML;
+  });
 }
 
 //make filter
