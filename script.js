@@ -162,6 +162,12 @@ function updateType(typeData) {
       `;
     resultsList.innerHTML += resultHTML;
   });
-}
 
-//make filter
+  function sortAlpha(typeData) {
+    return typeData.sort((a, b) => a.pokemon.name - b.pokemon.name)
+  }
+
+  function sortRevAlpha(typeData) {
+    return typeData.sort((a, b) => b.pokemon.name - a.pokemon.name)
+  }
+}
