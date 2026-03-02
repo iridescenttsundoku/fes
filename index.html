@@ -14,10 +14,13 @@
 
 <body>
     <header>
-        <button onclick = "toggleHeading()"><img src = "https://cdn-icons-png.freepik.com/256/189/189012.png" class = "dex-logo"></button>
+        <button class = "tgl" onclick = "toggleHeading()"><img src = "https://cdn-icons-png.freepik.com/256/189/189012.png" class = "dex-logo"></button>
         <!--<h1 class = "dex-title">Pokédex</h1>-->
         <div class = "heading">
-            <h1 class = "head-top">Look up any Pokémon or any type :]</h1>
+            <div class = "filter">
+                <button class = "filter-btn" onclick = "sortAlpha()">Alphabetical</button>
+                <button class = "filter-btn" onclick = "sortRevAlpha()">Reverse Alphabetical</button>
+            </div>
         </div>
     </header>
     <section id="landing">
@@ -67,4 +70,3 @@
 </body>
 
 </html>
-
