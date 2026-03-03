@@ -34,29 +34,39 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function clearResults() {
+  const resultsList = document.querySelector(".results");
+  resultsList.innerHTML = "";
+}
 
 async function searchPokeAPI(query) {
+  if (!query) return;
+
   try {
-    // Try Pokémon first
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query.toLowerCase()}`);
-    
+    //Pokémon first
+    let response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${query.toLowerCase()}`,
+    );
+
     if (response.ok) {
-      const data = await response.json();
-      updatePKMN([data]);
+      const pokemonData = await response.json();
+      updatePKMN(pokemonData);
+      clearResults();
       return;
     }
 
-    // If not found, try Type endpoint
-    response = await fetch(`https://pokeapi.co/api/v2/type/${query.toLowerCase()}`);
-    
+    // If not found → Try Type
+    response = await fetch(
+      `https://pokeapi.co/api/v2/type/${query.toLowerCase()}`,
+    );
+
     if (response.ok) {
       const typeData = await response.json();
       updateType(typeData);
       return;
     }
 
-    alert("Not found. Try again.");
-
+    alert("Not found. Try a Pokémon name or a type.");
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -140,34 +150,56 @@ function updatePKMN([data]) {
 
 //make updateType
 
-function updateType(typeData) {
-  const resultsList = document.querySelector(".results");
+let currentTypePokemon = [];
+let currentTypeID = null;
 
-  typeData.pokemon.forEach((pokemon) => {
-    resultHTML = `
-      <div class = "result">
-        <div class = "result-sprite">
-          <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemon.url.split("/")[6]}.png" alt = "${pokemon.pokemon.name} sprite">
+function updateType(typeData) {
+  currentTypePokemon = [...typeData.pokemon];
+  currentTypeID = typeData.id;
+
+  renderTypePokemon(currentTypePokemon, currentTypeID);
+}
+
+function renderTypePokemon(pokemonArray, typeID) {
+  const resultsList = document.querySelector(".results");
+  resultsList.innerHTML = "";
+
+  pokemonArray.forEach((pokemon) => {
+    const id = pokemon.pokemon.url.split("/")[6];
+
+    resultsList.innerHTML += `
+      <div class="result">
+        <div class="result-sprite">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">
         </div>
-        <div class = "result-info">
-          <div class = "result-type">
-            <figure class = "result-type__img"><img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeData.id}.png"></figure>
-          </div>
-          <h2 class = "result-species">${pokemon.pokemon.name}</h2>
-          <div class = "result-id">
-            <p>No. ${pokemon.pokemon.url.split("/")[6]}</p>
-          </div>
+        <div class="result-info">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-vi/omega-ruby-alpha-sapphire/${typeID}.png">
+          </figure>
+          <h2>${pokemon.pokemon.name}</h2>
+          <p>No. ${id}</p>
         </div>
       </div>
-      `;
-    resultsList.innerHTML += resultHTML;
+    `;
   });
+}
 
-  function sortAlpha(typeData) {
-    return typeData.sort((a, b) => a.pokemon.name - b.pokemon.name)
-  }
+function sortAlpha() {
+  if (!currentTypePokemon.length) return;
 
-  function sortRevAlpha(typeData) {
-    return typeData.sort((a, b) => b.pokemon.name - a.pokemon.name)
-  }
+  currentTypePokemon.sort((a, b) =>
+    a.pokemon.name.localeCompare(b.pokemon.name),
+  );
+
+  renderTypePokemon(currentTypePokemon, currentTypeID);
+}
+
+function sortRevAlpha() {
+  if (!currentTypePokemon.length) return;
+
+  currentTypePokemon.sort((a, b) =>
+    b.pokemon.name.localeCompare(a.pokemon.name),
+  );
+
+  renderTypePokemon(currentTypePokemon, currentTypeID);
 }
