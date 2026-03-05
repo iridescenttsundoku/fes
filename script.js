@@ -6,18 +6,6 @@ function toggleHeading() {
   headTop.classList.toggle("open");
 }
 
-function moveBackground(event) {
-  const shapes = document.querySelectorAll(".shape");
-  const x = event.clientX * scaleFactor;
-  const y = event.clientY * scaleFactor;
-
-  for (let i = 0; i < shapes.length; ++i) {
-    const isOdd = i % 2 !== 0;
-    const boolOdd = isOdd ? -1 : 1 ;
-    shapes[i].style.transform = `translate(${x * boolOdd}px, ${y * boolOdd}px) rotate(${x * boolOdd * 10}deg)`
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector(".matrix-container");
 
@@ -49,9 +37,9 @@ async function searchPokeAPI(query) {
     );
 
     if (response.ok) {
-      const pokemonData = await response.json();
-      updatePKMN(pokemonData);
+      const data = await response.json();
       clearResults();
+      updatePKMN([data]);
       return;
     }
 
